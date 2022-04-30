@@ -17,15 +17,15 @@ O sistema da Easy Access é um gerenciamento de logística para a instituição 
 Tópicos de usabilidade: 
 
 Visão geral: Exibido na página inicial; uma tabela com código do produto, nome do produto, quantidade disponível, localização, haverá também uma lacuna para adicionar novos produtos caso necessário. A tabela atualiza-se instantaneamente. 
-Produto em uso: Código do produto: dada ao controle de códigos (barra, id etiqueta).
+<br>Produto em uso: Código do produto: dada ao controle de códigos (barra, id etiqueta).
 Nome do produto: Qual produto.
 Nome do solicitante: Quem fez a solicitação no almoxarifado.
 Funcionário responsável: Quem liberou o produto para o solicitante.
 Quantidade: Quantos itens foram utilizados. 
 Horário empréstimo: Horário de retirada do produto no almoxarifado.
-	Relatório: Caso haja devolução de produtos ao almoxarifado, serão armazenados detalhes necessários, como, horário de devolução que irá alterar o valor da tabela de “VISÃO GERAL”, somando a quantidade disponível para empréstimo. Os controladores  de filtros para gerenciar o que o usuário solicitou qual item e discriminar a data de retirada, horários, e também o horário de devolução que o solicitante entregou ao almoxarifado.
-	Reservas: campo onde requirimos reservas. O usuário solicitará o dia, o horário, o equipamento e determinada quantidade para que assim não haja problemas com falta de produtos, caso não exista reserva, é definido por ordem de pedido.
-	Observação: Campo destinado a adição de observações em um determinado produto, se o produto apresenta danos, fora dos padrões de utilização ou fábrica. A tabela contém o código do produto, nome do produto e observações.
+<br>	Relatório: Caso haja devolução de produtos ao almoxarifado, serão armazenados detalhes necessários, como, horário de devolução que irá alterar o valor da tabela de “VISÃO GERAL”, somando a quantidade disponível para empréstimo. Os controladores  de filtros para gerenciar o que o usuário solicitou qual item e discriminar a data de retirada, horários, e também o horário de devolução que o solicitante entregou ao almoxarifado.
+<br>	Reservas: campo onde requirimos reservas. O usuário solicitará o dia, o horário, o equipamento e determinada quantidade para que assim não haja problemas com falta de produtos, caso não exista reserva, é definido por ordem de pedido.
+<br>	Observação: Campo destinado a adição de observações em um determinado produto, se o produto apresenta danos, fora dos padrões de utilização ou fábrica. A tabela contém o código do produto, nome do produto e observações.
 	Caixa de ideias: Essa área fica disponível para o usuário digitar ideias e dicas para melhorar a experiência dentro do sistema. 
 
 
