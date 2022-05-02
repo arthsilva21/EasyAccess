@@ -1,5 +1,5 @@
 #EASY ACCESS
-GERENCIAMENTO DE ESTOQUE E PATRIMÔNIO DE UTILIZÁVEIS
+GERENCIAMENTO DE ESTOQUE E PATRIMÔNIO DE UTILIZÁVEIS.
 
 Sistema Easy Access, desenvolvido para resolução e viabilidade do controle e gerenciamento de estoque do Senai Goiás.
 
