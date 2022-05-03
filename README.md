@@ -6,7 +6,7 @@ Sistema Easy Access, desenvolvido para resolução e viabilidade do controle e g
 
 A unidade Sesi Senai-GO necessita de reajustes no controle do estoque e processos logísticos, visando a dificuldade na comunicação quanto a movimentação de patrimônio e localização de utilizáveis para o funcionamento das atividades no centro de ensino, criamos a ferramenta em questão: Easy Access, facilidade proposta de maneira inteligente e prática a resolução ideal ao nível Senai.
 
-O sistema da Easy Access é um gerenciamento de logística para a instituição Sesi Senai GO, onde irá controlar o estoque dos materiais da escola, há uma página inicial com um login usando uma senha padrão para ter acesso a parte cadastral do sistema, o usuário irá realizar seu cadastro e entrar no sistema. Após o cadastro, o usuário será direcionado a uma tela com a tabela de informações e tópicos ao lado esquerdo ditando diferentes funcionalidades, cada tópico recarrega a tabela em tempo real, atualizando-a após finalizar as solicitações.
+O sistema Easy Access é um gerenciamento de logística para a instituição Sesi Senai-GO, controlará o estoque dos materiais escolares, há uma página inicial com um login utilizando uma senha padrão para acessar a parte cadastral do sistema, o usuário realizará seu cadastro adentrando ao sistema. Após cadastrado, o usuário será direcionado a uma tela com a tabela de informações e tópicos ao lado esquerdo, ditando diferentes funcionalidades, cada tópico recarrega a tabela em tempo real atualizando-a após finalizar as solicitações.
 
 Tópicos de usabilidade: 
 
