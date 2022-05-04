@@ -45,6 +45,6 @@ do produto, Nome do produto, Nome do solicitante, Funcionário responsável, qua
 <br>
 <b>RFN - 002:</b> Navegador Web instalado, como: Chrome e/ou Firefox.
 <br>
-<b>RFN - 003:</b> Linguagem de programação utilizada: Javascript, Python, Banco de dados MySQL
+<b>RFN - 003:</b> Linguagem de programação utilizada: Javascript, Python, Banco de dados MySQL.
 <br>
 <b>RFN - 004:</b> Executável em sistemas Windows.
