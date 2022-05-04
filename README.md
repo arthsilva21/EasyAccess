@@ -10,7 +10,7 @@ O sistema criado funciona como um gerenciador logístico para a instituição Se
 <br>
 <br>
 <b>Visão geral:</b> Exibido na página inicial; uma tabela com código do produto, nome do produto, quantidade disponível, localização e também haverá uma lacuna que adiciona novos produtos caso necessário. A tabela atualiza-se instantaneamente.<br>
-Produto em uso: Código do produto: dada ao controle de códigos (barra, id etiqueta).<br>
+<b>Produtos em uso:</b> Código do produto: dada ao controle de códigos (barra, id etiqueta).<br>
 Nome do produto: Qual produto.<br>
 Nome do solicitante: Quem fez a solicitação no almoxarifado.<br>
 Funcionário responsável: Quem liberou o produto para o solicitante.<br>
