@@ -40,7 +40,9 @@ RF - 005: O Sistema atualiza a cada modificação das tabelas.
 <br>
 RF - 006: O Sistema trará mais praticidade  tanto no consumo de seus produtos quanto na organização.
 <br>
+<br>
 Requisitos não funcionais:
+<br>
 <br>
 RFN - 001: Necessidade em ter-se acesso a internet e que seja estável.
 <br>
