@@ -19,7 +19,7 @@ Horário de empréstimo: Horário de retirada do produto no almoxarifado.<br>
 <b>Relatório:</b> Caso haja devolução de produtos ao almoxarifado, serão armazenados detalhes necessários, como, horário de devolução que irá alterar o valor da tabela de “visão geral”, somando a quantidade disponível para empréstimo. Os controladores  de filtros para gerenciar o que o usuário solicitou qual item e discriminar a data de retirada, horários, e também o horário de devolução que o solicitante entregou ao almoxarifado.<br>
 <b>Reservas:</b> Campo onde pode ser feito reservas. O usuário solicitará o dia, o horário, o equipamento e determinada quantidade para que assim não haja problemas com falta de produtos, caso não exista reserva, é definido por ordem de pedido.<br>
 <b>Observação:</b> Campo destinado a adição de observações em um determinado produto, se o produto apresenta danos, fora dos padrões de utilização ou fábrica. A tabela contém o código do produto, nome do produto e observações.<br>
-<b>Caixa de ideias:</b> Essa área fica disponível para o usuário digitar ideias e dicas para melhorar a experiência dentro do sistema. 
+<b>Caixa de ideias:</b> Essa área fica disponível para o usuário digitar ideias e dicas para melhorar a experiência dentro do sistema. Atribuições sugeridas pelo usúario serão enviadas ao e-mail administrador do sistema.
 <br>
 <br>
 <b>REQUISITOS FUNCIONAIS:</b><br>
