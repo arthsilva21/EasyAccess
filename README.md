@@ -1,14 +1,16 @@
-#EASY ACCESS
+#EASY ACCESS<br>
 <br>
-GERENCIAMENTO DE ESTOQUE E PATRIMÔNIO DE UTILIZÁVEIS.
+GERENCIAMENTO DE ESTOQUE E PATRIMÔNIO DE UTILIZÁVEIS.<br>
 <br>
-Sistema Easy Access, desenvolvido para resolução e viabilidade do controle e gerenciamento de estoque do Senai Goiás.
+Sistema Easy Access, desenvolvido para resolução e viabilidade do controle e gerenciamento de estoque do Senai Goiás.<br>
 <br>
-A unidade Sesi Senai-GO necessita de reajustes no controle do estoque e processos logísticos, visando a dificuldade na comunicação quanto a movimentação de patrimônio e localização de utilizáveis para o funcionamento das atividades no centro de ensino, criamos a ferramenta em questão: Easy Access, facilidade proposta de maneira inteligente e prática a resolução ideal ao nível Senai.
+A unidade Sesi Senai-GO necessita de reajustes no controle do estoque e processos logísticos, visando a dificuldade na comunicação quanto a movimentação de patrimônio e localização de utilizáveis para o funcionamento das atividades no centro de ensino, criamos a ferramenta em questão: Easy Access, facilidade proposta de maneira inteligente e prática a resolução ideal ao nível Senai.<br>
 <br>
-O sistema Easy Access é um gerenciamento de logística para a instituição Sesi Senai-GO, controlará o estoque dos materiais escolares, há uma página inicial com um login utilizando uma senha padrão para acessar a parte cadastral do sistema, o usuário realizará seu cadastro adentrando ao sistema. Após cadastrado, o usuário será direcionado a uma tela com a tabela de informações e tópicos ao lado esquerdo, ditando diferentes funcionalidades, cada tópico recarrega a tabela em tempo real atualizando-a após finalizar as solicitações.
+O sistema Easy Access é um gerenciamento de logística para a instituição Sesi Senai-GO, controlará o estoque dos materiais escolares, há uma página inicial com um login utilizando uma senha padrão para acessar a parte cadastral do sistema, o usuário realizará seu cadastro adentrando ao sistema. Após cadastrado, o usuário será direcionado a uma tela com a tabela de informações e tópicos ao lado esquerdo, ditando diferentes funcionalidades, cada tópico recarrega a tabela em tempo real atualizando-a após finalizar as solicitações.<br>
+<br>
 <br>
 Tópicos de usabilidade: 
+<br>
 <br>
 Visão geral: Exibido na página inicial; uma tabela com código do produto, nome do produto, quantidade disponível, localização e também haverá uma lacuna que adiciona novos produtos caso necessário. A tabela atualiza-se instantaneamente.<br>
 Produto em uso: Código do produto: dada ao controle de códigos (barra, id etiqueta).<br>
@@ -23,7 +25,7 @@ Observação: Campo destinado a adição de observações em um determinado prod
 Caixa de ideias: Essa área fica disponível para o usuário digitar ideias e dicas para melhorar a experiência dentro do sistema. 
 <br>
 <br>
-REQUISITOS FUNCIONAIS
+REQUISITOS FUNCIONAIS:<br>
 <br>
 RF - 001: O Sistema irá permitir o gerenciamento de estoque de patrimônio e de utilizáveis do almoxarife do Senai a partir de uma série de informações.
 <br>
