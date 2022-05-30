@@ -31,18 +31,15 @@ Horário empréstimo: Horário de retirada do produto no almoxarifado.
 
 REQUISITOS FUNCIONAIS
 
-RF - 001: O Sistema irá permitir o gerenciamento de estoque de patrimônio e de utilizáveis do almoxarife do Senai a partir de uma série de informações.
+RF - 001: O Sistema irá permitir o gerenciamento do estoque de patrimônio e de utilizáveis do almoxarifado do Senai a partir de uma série de informações.
 
 RF - 002: O Sistema conterá uma tela de login para ter uma segurança maior, apenas funcionários cadastrados poderão entrar no sistema para liberar ou dar baixa em algum utensílio.
  
-RF - 003: O Sistema gravará os dados em um banco de dados para futuras consultas caso necessárias, os dados serão: Código 
-do produto, Nome do produto, Nome do solicitante, Funcionário responsável, quantidade e horário do empréstimo.
+RF - 003: O Sistema gravará os dados em um banco de dados para futuras consultas caso necessárias, os dados serão: Código do produto, Nome do produto, Nome do solicitante, Funcionário responsável, quantidade e horário do empréstimo.
 
-RF - 004: O Sistema permite ao usuário deixar uma ideia de melhoria para novas experiências.
+RF - 004: O Sistema trará mais praticidade no consumo de seus produtos e na organização.
 
-RF - 005: O Sistema atualiza a cada modificação das tabelas.
-
-RF - 006: O Sistema trará mais praticidade  tanto no consumo de seus produtos quanto na organização.
+RF - 005: O Sistema automaticamente atualiza de acordo com as modificações nas tabelas.
 
 Requisitos não funcionais
 
