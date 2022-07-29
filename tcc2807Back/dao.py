@@ -1,4 +1,3 @@
-from colorama import Cursor
 import mysql.connector
 
 
@@ -47,7 +46,7 @@ def inserirProduto(nome_produto, quantidade, localizacao):
     return "inserido"
 
 
-#EM USO
+#Select na tabela produto para ter apenas o produto desejado
 def PesquisarProduto(nome):
     bd = conecta()
     cursor = bd.cursor()
@@ -58,9 +57,7 @@ def PesquisarProduto(nome):
     return cursor.fetchall()
 
 
-#EM USO
-
-
+#Delete em produto na tabela de produtos
 def excluirProduto(id):
     bd = conecta()
     cursor = bd.cursor()
@@ -70,45 +67,46 @@ def excluirProduto(id):
     bd.commit()
     return 'Deletado'
 
+#Update na tabela de produtos para atualizar produtos disponiveis para emprestimos
+# def atualizarEstoque(quantidade, nome_produto):
+#     bd = conecta()
+#     cursor = bd.cursor()
+#     quantidade_atual = buscaQuantidade(nome_produto)
+#     if quantidade_atual >= int(quantidade):
+#         total = int(quantidade_atual) - int(quantidade)
+#         sql = "update produtos set quantidade = %s where nome_produto = %s"
+#         valores = (total, nome_produto)
+#         cursor.execute(sql, valores)
+#         bd.commit()
+#     else:
+#         return 'Quantidade invalida!'
 
-def atualizarEstoque(quantidade, nome_produto):
-    bd = conecta()
-    cursor = bd.cursor()
-    quantidade_atual = buscaQuantidade(nome_produto)
-    if quantidade_atual >= int(quantidade):
-        total = int(quantidade_atual) - int(quantidade)
-        sql = "update produtos set quantidade = %s where nome_produto = %s"
-        valores = (total, nome_produto)
-        cursor.execute(sql, valores)
-        bd.commit()
-    else:
-        return 'Quantidade invalida!'
-
-
-def adicionarEstoque(quantidade, nome_produto):
-    bd = conecta()
-    cursor = bd.cursor()
-    quantidade_atual = buscaQuantidade(nome_produto)
-    if quantidade_atual >= int(quantidade):
-        total = int(quantidade_atual) + int(quantidade)
-        sql = "update produtos set quantidade = %s where nome_produto = %s"
-        valores = (total, nome_produto)
-        cursor.execute(sql, valores)
-        bd.commit()
-
-
-def buscaQuantidade(nome):
-    bd = conecta()
-    cursor = bd.cursor()
-    ss = "select quantidade from produtos where nome_produto like %s"
-    valor = (nome,)
-    cursor.execute(ss, valor)
-    quanti = cursor.fetchone()
-    return int(quanti[0])
-
-#EM USO
+# #Adicionar a um produto existente um valor maior na quantidade
+# #SEM USO
+# def adicionarEstoque(quantidade, nome_produto):
+#     bd = conecta()
+#     cursor = bd.cursor()
+#     quantidade_atual = buscaQuantidade(nome_produto)
+#     if quantidade_atual >= int(quantidade):
+#         total = int(quantidade_atual) + int(quantidade)
+#         sql = "update produtos set quantidade = %s where nome_produto = %s"
+#         valores = (total, nome_produto)
+#         cursor.execute(sql, valores)
+#         bd.commit()
 
 
+# #Buscar quantidade disponivel 
+# #SEM USO
+# def buscaQuantidade(nome):
+#     bd = conecta()
+#     cursor = bd.cursor()
+#     ss = "select quantidade from produtos where nome_produto like %s"
+#     valor = (nome,)
+#     cursor.execute(ss, valor)
+#     quanti = cursor.fetchone()
+#     return int(quanti[0])
+
+#Select apenas nome do produto na tabela de produtos
 def VerProdutos():
     bd = conecta()
     cursor = bd.cursor()
@@ -116,7 +114,7 @@ def VerProdutos():
     cursor.execute(ss)
     return cursor.fetchall()
 
-
+#Select em toda tabela de emprestimos
 def Emprestimos():
     bd = conecta()
     cursor = bd.cursor()
@@ -124,6 +122,7 @@ def Emprestimos():
     cursor.execute(sql)
     return cursor.fetchall()
 
+#Insert para inserir um novo emprestimo quando realizado
 def InserirEmprestimo(nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo):
     bd = conecta()
     cursor = bd.cursor()
@@ -133,7 +132,7 @@ def InserirEmprestimo(nome_produto, quantidade, solicitante, responsavel, hora_d
     cursor.execute(sql, values)
     bd.commit()
 
-
+#Delete na tabela de emprestimo
 def DeletarEmprestimo(nome_produto):
     bd = conecta()
     cursor = bd.cursor()
@@ -142,9 +141,15 @@ def DeletarEmprestimo(nome_produto):
     cursor.execute(sql, values)
     bd.commit()
 
+#Select de toda tabela de reserva
+def TabelaReservas():
+    bd = conecta()
+    cursor = bd.cursor()
+    sql = "select * from reservas order by id_reserva desc"
+    cursor.execute(sql)
+    return cursor.fetchall()
 
-
-
+#Insert na tabela reservas
 def ReservarProduto(nome_produto, solicitante, quantidade, hora_da_reserva):
     bd = conecta()
     cursor = bd.cursor()
@@ -153,14 +158,7 @@ def ReservarProduto(nome_produto, solicitante, quantidade, hora_da_reserva):
     cursor.execute(sql, valor)
     bd.commit()
 
-
-def TabelaReservas():
-    bd = conecta()
-    cursor = bd.cursor()
-    sql = "select * from reservas order by id_reserva desc"
-    cursor.execute(sql)
-    return cursor.fetchall()
-
+#Delete na tabela de reserva
 def ExcluirReserva(id_reserva):
     bd = conecta()
     cursor = bd.cursor()
@@ -169,6 +167,7 @@ def ExcluirReserva(id_reserva):
     cursor.execute(sql, valor)
     bd.commit()
 
+#Select na tabela de relatorios
 def Relatorios():
     bd = conecta()
     cursor= bd.cursor()
@@ -176,6 +175,7 @@ def Relatorios():
     cursor.execute(sql)
     return cursor.fetchall()
 
+#Insert para inserir novo dado em relatorio
 def InserirRelatorio(nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo, hora_da_devolucao):
     bd = conecta()
     cursor = bd.cursor()
@@ -185,6 +185,7 @@ def InserirRelatorio(nome_produto, quantidade, solicitante, responsavel, hora_do
     cursor.execute(sql, values)
     bd.commit()
 
+#Select para filtrar as datas dos relatorios
 def FiltroRelatorio(hora_do_emprestimo, hora_da_devolucao):
     bd = conecta()
     cursor = bd.cursor()
@@ -193,6 +194,7 @@ def FiltroRelatorio(hora_do_emprestimo, hora_da_devolucao):
     cursor.execute(sql, values)
     return cursor.fetchall()
 
+#Update na tabela produtos para quando for realizado o emprestimo diminuir a quantidade emprestada na quantidade disponivel
 def SubtrairQuantidadeProdutos(quantidade, nome_produto):
     bd = conecta()
     cursor = bd.cursor()
@@ -201,6 +203,8 @@ def SubtrairQuantidadeProdutos(quantidade, nome_produto):
     cursor.execute(sql, values) 
     bd.commit()
 
+
+#Update na tabela produtos para quando for realizado a devolucao do emprestimo aumentar a quantidade disponivel
 def SomarQuantidadeProdutos(quantidade, nome_produto):
     bd = conecta()
     cursor = bd.cursor()

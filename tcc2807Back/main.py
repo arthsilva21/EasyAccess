@@ -73,7 +73,7 @@ def Produtos():
             return render_template("produto.html", lista=lista_banco)
     return redirect(url_for('Iniciar'))
 
-#Funcao para exclusao no botao da tabela
+#Funcao para exclusao no botao da tabela de produtos
 @app.route('/produtoExclusao', methods=['POST'])
 def Excluir():
     id_produto = request.form['id_excluir']
@@ -105,13 +105,14 @@ def InserirProduto():
     dao.inserirProduto(nome_produto, quantidade, localizacao)
     return AbrirCadastroProduto()
 
-#Funcao para abrir emprestimos
+#Funcao para abrir emprestimos com a lista de emprestimos
 @app.route("/emprestimo")  
 def Emprestimo():
     if 'administrator' in session:  
         return render_template("emprestimo.html", geral=dao.Produtos(), emprestimo=dao.Emprestimos())
     return redirect(url_for('Iniciar'))
 
+#Funcao para inserir um novo emprestimo na tabela
 @app.route("/emprestimo", methods=['POST'])  
 def InserirEmprestimo():
     nome_produto = request.form['nome_produto']
@@ -122,7 +123,6 @@ def InserirEmprestimo():
     dao.SubtrairQuantidadeProdutos(quantidade, nome_produto)
     dao.InserirEmprestimo(nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo)
     return Emprestimo()
-
 
 #Funcao para devolver o produto para almoxarife e atualizar quantidade disponivel
 @app.route("/produtoDevolucao", methods=['POST'])
@@ -145,7 +145,6 @@ def Reserva():
         return render_template("reserva.html", reserva=dao.VerProdutos(), lista=dao.TabelaReservas())
     return redirect(url_for('Iniciar'))
 
-
 #Funcao para inserir uma reserva na tabela
 @app.route("/reserva", methods=['POST'])
 def ReservarProduto():
@@ -162,7 +161,6 @@ def ExcluirReserva():
     id_reserva = request.form['id_reserva']
     dao.ExcluirReserva(id_reserva)
     return Reserva()
-
 
 
 #Funcao para carregar relatorios dos produtos na tabela

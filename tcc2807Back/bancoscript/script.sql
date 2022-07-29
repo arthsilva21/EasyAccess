@@ -16,7 +16,7 @@ create table produtos(id int primary key auto_increment, nome_produto varchar(25
 
 insert into produtos(nome_produto, quantidade, localizacao) values ("Chave de fenda ", 2, "Gaveta A-50");
 insert into produtos(nome_produto, quantidade, localizacao) values ("Chave de Boca 12 ", 2, "Gaveta B-60");
-insert into produtos(nome_produto, quantidade, localizacao) values ("Plantaria ", 2, "Gaveta C-70");
+insert into produtos(nome_produto, quantidade, localizacao) values ("Planetaria ", 2, "Gaveta C-70");
 insert into produtos(nome_produto, quantidade, localizacao) values ("Lixa de 20 ", 2, "Gaveta D-80");
 
 select * from produtos; 

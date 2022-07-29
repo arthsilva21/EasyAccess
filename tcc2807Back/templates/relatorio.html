@@ -5,8 +5,8 @@
 {% block content %}
 
 
-<h2>Relatório do patrimônio</h2>
 <form class="content-relatorio" action="filtroRelatorio" method="post">
+    <h2>Relatório do patrimônio</h2>
     <input type="datetime-local" name="hora_do_emprestimo">
     <input type="datetime-local" name="hora_da_devolucao">
     <input type="submit" value="Pesquisar">
@@ -28,12 +28,12 @@
             <!--Lógica para adicionar dados diretamente do banco de dados-->
             {% for relatorio in relatorio %}
             <tr>
+                <td>{{ relatorio[0] }}</td>
                 <td>{{ relatorio[1] }}</td>
                 <td>{{ relatorio[2] }}</td>
                 <td>{{ relatorio[3] }}</td>
                 <td>{{ relatorio[4] }}</td>
                 <td>{{ relatorio[5] }}</td>
-                <td>{{ relatorio[6] }}</td>
             </tr>
             {% endfor %}
         </tbody>
