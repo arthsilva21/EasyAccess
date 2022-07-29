@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Bloco para recarregar em uma unica pagina-->
+{% extends "home.html" %}
+{% block content %}
+
+
+<form class="content-relatorio" action="filtroRelatorio" method="post">
+    <h2>Relatório do patrimônio</h2>
+    <input type="datetime-local" name="hora_do_emprestimo">
+    <input type="datetime-local" name="hora_da_devolucao">
+    <input type="submit" value="Pesquisar">
+</form>
+<!--Criação do formato de tabela -->
+<form action="relatorio" method="post" class="relatorio">
+    <table class="table-relatorio">
+        <thead>
+            <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Solicitante</th>
+                <th scope="col">Responsavel</th>
+                <th scope="col">Hora do empréstimo</th>
+                <th scope="col">Hora de devolução</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Lógica para adicionar dados diretamente do banco de dados-->
+            {% for relatorio in relatorio %}
+            <tr>
+                <td>{{ relatorio[0] }}</td>
+                <td>{{ relatorio[1] }}</td>
+                <td>{{ relatorio[2] }}</td>
+                <td>{{ relatorio[3] }}</td>
+                <td>{{ relatorio[4] }}</td>
+                <td>{{ relatorio[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</form>
+
+
+
+{% endblock %}
