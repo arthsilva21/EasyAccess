@@ -1,0 +1,191 @@
+from flask import Flask, redirect, render_template, request, url_for
+from flask import session
+import dao
+from datetime import datetime
+
+app = Flask(__name__)
+app.secret_key = 'autorizado'
+#Ter variavel do usuario logado para validar no banco de dados // e utilizar o username setado em usuarioLogado no projeto\\
+usuarioLogado = ""
+#Variavel para poder pesquisar determinado produto na tabela de Produto em Uso// PRECISA SER GLOBAL PARA NAO DAR ERRO \\
+produto = ""
+
+
+#Iniciando a aplicacao
+@app.route("/")
+def Iniciar():
+    return render_template("index.html")
+
+
+#Funcao para o login
+@app.route("/login", methods=["POST", "GET"])
+def Login():
+    global usuarioLogado
+    usuarioLogado = request.form["username"]
+    username = request.form["username"]
+    senha = request.form["senha"]
+    if dao.Logar(username, senha):
+        session['administrator'] = request.form['username']
+        return redirect(url_for('Home'))
+    return render_template("index.html")
+
+
+#Funcao para abrir tela onde pode cadastrar novo usuario
+@app.route("/cadastrarUsuario")
+def AbrirCadastroUsuario():
+    return render_template("cadastrarUsuario.html")
+
+#Funçao para inserir novo usuario
+
+
+@app.route("/cadastrarUsuario", methods=["POST"])
+def CadastrarUsuario():
+    username = request.form["username"]
+    senha = request.form["senha"]
+    validarSenha = request.form["validarSenha"]
+    if senha == validarSenha:
+        dao.cadastrarUsuario(username, senha)
+        return redirect(url_for('Iniciar'))
+    return AbrirCadastroUsuario()
+
+
+#Funcao para abrir tela de home
+@app.route('/home')
+def Home():
+    if 'administrator' in session:
+        return render_template("home.html", usuario=usuarioLogado)
+    return redirect(url_for('Iniciar'))
+
+
+#Funcao onde retorna a tabela de todos produtos em uso
+#Retorna tambem o request do botao para pesquisar nome de um produto na tabela
+@app.route("/produto", methods=['GET', 'POST'])
+def Produtos():
+    global produto
+    if 'administrator' in session:
+        lista_banco = dao.Produtos()
+        if request.method == 'POST':
+            produto = request.form["pesquisarProduto"]
+            if produto != None:
+                lista_banco = dao.PesquisarProduto(produto)
+            return render_template("produto.html", lista=lista_banco)
+        else:
+            return render_template("produto.html", lista=lista_banco)
+    return redirect(url_for('Iniciar'))
+
+#Funcao para exclusao no botao da tabela
+@app.route('/produtoExclusao', methods=['POST'])
+def Excluir():
+    id_produto = request.form['id_excluir']
+    dao.excluirProduto(id_produto)
+    return render_template('produto.html', lista=dao.Produtos())
+
+
+#Funcao para abrir tela de cadastrar produto
+@app.route("/cadastrarProduto")
+def AbrirCadastroProduto():
+    return render_template("cadastrarProduto.html", cadastrarProduto=dao.VerProdutos())
+
+
+#Funcao para atualizar quantidade do produto caso exista
+@app.route("/atualizarProduto", methods=['POST'])
+def AtualizarProduto():
+    nome_produto_select = request.form['nome_produto_select']
+    atualizar_quantidade = request.form['atualizar_quantidade']
+    dao.SomarQuantidadeProdutos(atualizar_quantidade, nome_produto_select)
+    return AbrirCadastroProduto()
+
+
+#Funcao para inserir um produto na tabela de produtos
+@app.route("/cadastrarProduto", methods=['POST'])
+def InserirProduto():
+    nome_produto = request.form['nome_produto']
+    quantidade = request.form['quantidade']
+    localizacao = request.form['localizacao']     
+    dao.inserirProduto(nome_produto, quantidade, localizacao)
+    return AbrirCadastroProduto()
+
+#Funcao para abrir emprestimos
+@app.route("/emprestimo")  
+def Emprestimo():
+    if 'administrator' in session:  
+        return render_template("emprestimo.html", geral=dao.Produtos(), emprestimo=dao.Emprestimos())
+    return redirect(url_for('Iniciar'))
+
+@app.route("/emprestimo", methods=['POST'])  
+def InserirEmprestimo():
+    nome_produto = request.form['nome_produto']
+    quantidade = request.form['quantidade']
+    solicitante = request.form['solicitante']
+    responsavel = request.form['responsavel']
+    hora_do_emprestimo = request.form['hora_do_emprestimo']
+    dao.SubtrairQuantidadeProdutos(quantidade, nome_produto)
+    dao.InserirEmprestimo(nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo)
+    return Emprestimo()
+
+
+#Funcao para devolver o produto para almoxarife e atualizar quantidade disponivel
+@app.route("/produtoDevolucao", methods=['POST'])
+def DevolverProdutoRelatorio():
+    nome_produto = request.form['nome_produto']
+    quantidade = request.form['quantidade']
+    solicitante = request.form['solicitante']
+    responsavel = request.form['responsavel']
+    hora_do_emprestimo = request.form['hora_do_emprestimo']
+    hora_da_devolucao = datetime.now()
+    dao.SomarQuantidadeProdutos(quantidade, nome_produto)
+    dao.InserirRelatorio(nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo, hora_da_devolucao)
+    dao.DeletarEmprestimo(nome_produto)
+    return Emprestimo()
+
+#Funcao para carregar pagina de reservas de produtos
+@app.route("/reserva", methods=['GET'])
+def Reserva():
+    if 'administrator' in session:
+        return render_template("reserva.html", reserva=dao.VerProdutos(), lista=dao.TabelaReservas())
+    return redirect(url_for('Iniciar'))
+
+
+#Funcao para inserir uma reserva na tabela
+@app.route("/reserva", methods=['POST'])
+def ReservarProduto():
+    nome_produto = request.form['reservar_select']
+    solicitante = request.form['solicitante']
+    quantidade = request.form['quantidade']
+    hora_da_reserva = request.form['hora_da_reserva']
+    dao.ReservarProduto(nome_produto, solicitante, quantidade, hora_da_reserva)
+    return Reserva()
+
+#Funcao para excluir reserva
+@app.route("/reservaExclusao", methods=['POST'])
+def ExcluirReserva():
+    id_reserva = request.form['id_reserva']
+    dao.ExcluirReserva(id_reserva)
+    return Reserva()
+
+
+
+#Funcao para carregar relatorios dos produtos na tabela
+@app.route("/relatorio")
+def Relatorio():
+    if 'administrator' in session:
+        return render_template("relatorio.html", relatorio=dao.Relatorios())
+    return redirect(url_for('Iniciar'))
+
+#Funcao para filtrar a busca em relatorio
+@app.route("/filtroRelatorio", methods=['POST'])
+def FiltroRelatorio():
+    hora_do_emprestimo = request.form['hora_do_emprestimo']
+    hora_da_devolucao = request.form['hora_da_devolucao']
+    if hora_da_devolucao != None and hora_da_devolucao > hora_do_emprestimo:
+        return render_template("relatorio.html", relatorio = dao.FiltroRelatorio(hora_do_emprestimo, hora_da_devolucao))            
+    return Relatorio()
+    
+#Encerrando aplicacao e voltando para a tela de login
+@app.route("/logout")
+def Logout():
+    session.pop('administrator', None)
+    return redirect(url_for('Iniciar'))
+
+
+app.run(debug=True)

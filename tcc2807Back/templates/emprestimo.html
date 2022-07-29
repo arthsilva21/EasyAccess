@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Bloco para recarregar em uma unica pagina-->
+{% extends "home.html" %}
+{% block content %}
+
+
+<form action="emprestimo" method="post" class="relatorio">
+    <h2>EMPRESTIMO</h2>
+    <!--Criação do formato de tabela -->
+    <select name="nome_produto" class="select" aria-label=".form-select-sm example">
+        <!--Lógica para o usuario selecionar material diretamente do banco de dados-->
+        {% for produto in geral %}
+
+        <option>{{ produto[1] }}</option>
+
+        {%endfor%}
+
+    </select>
+    <br>
+    <input type="text" name="quantidade" placeholder="Quantidade">
+    <br>
+    <input type="text" name="solicitante" placeholder="Solicitante">
+    <br>
+    <input type="text" name="responsavel" placeholder="Responsavel">
+    <br>
+    <input type="datetime-local" name="hora_do_emprestimo" placeholder="Data">
+    <br>
+    <input type="submit" name="enviar" placeholder="Enviar">
+    
+</form>
+
+
+    <!--Criação do formato de tabela -->
+    <table class="table-relatorio">
+        <thead>
+            <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Solicitante</th>
+                <th scope="col">Responsavel</th>
+                <th scope="col">Hora do empréstimo</th>
+                <th scope="col">Devolução</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Lógica para adicionar dados diretamente do banco de dados-->
+            {% for relatorio in emprestimo %}
+            <tr>
+                <td>{{ relatorio[1] }}</td>
+                <td>{{ relatorio[2] }}</td>
+                <td>{{ relatorio[3] }}</td>
+                <td>{{ relatorio[4] }}</td>
+                <td>{{ relatorio[5] }}</td>
+                <!-- Botão vinculado diretamente com o produto -->
+                <form action="produtoDevolucao" method="post" class="produto">
+                    <td>
+                        <input type="text" value="{{ relatorio[1]}}" name="nome_produto" hidden>
+                        <input type="text" value="{{ relatorio[2]}}" name="quantidade" hidden>
+                        <input type="text" value="{{ relatorio[3]}}" name="solicitante" hidden>
+                        <input type="text" value="{{ relatorio[4]}}" name="responsavel" hidden>
+                        <input type="text" value="{{ relatorio[5]}}" name="hora_do_emprestimo" hidden>
+                        <input type="submit" value="Devolver" class="btn btn-danger">
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
