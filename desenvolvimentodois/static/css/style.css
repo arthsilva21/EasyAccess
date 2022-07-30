@@ -1,0 +1,219 @@
+/*Estiliza geral*/
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/*corpo do site*/
+body {
+    background-color: rgb(248, 244, 244);
+}
+
+/*Imagem de login*/
+.img {
+    text-align: center;
+    padding-top: 150px;
+}
+
+
+/*O box do login*/
+.content-center {
+    width: 100%;
+    max-width: 350px;
+    margin:auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgb(226, 225, 225);
+    border-radius: 15px;
+}
+
+.content-center .text-center {
+    text-align: center;
+}
+
+.content-center img {
+    width: 70%;
+}
+
+.content-center form {
+    margin: 20px;
+}
+
+.content-form input:focus{
+    border-color:rgb(245, 19, 19);
+}
+
+/*Input pro usuario digitar #login*/
+.content-form input {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 5px;
+    outline: none;
+}
+
+/*Botão do login*/
+#btn-submit {
+    background-color: rgb(245, 19, 19);
+    color: aliceblue;
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 5px;
+    outline: none;
+}
+
+/*Navebar*/
+.navbar {
+    background-color: red;
+    padding: 30px;
+    margin-top: 0px;
+}
+
+/*Icone desconectar*/
+.desconectar {
+    padding-left: 25px;
+    position: absolute;
+    right: 40px;
+    text-decoration: none;
+    color: white;
+}
+
+/*Sidebar lateral #topicos*/
+.sidebar{
+    position: fixed;
+    width: 220px;
+    height: 100%;
+    background: rgb(43, 40, 40);
+}
+
+/*Links #topicos*/
+a.nav-link{
+    color: black;
+    padding: 0.6rem;
+    display: inline-block;
+} 
+
+/*Efeitos #topicos*/
+.sidebar li a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 40px;
+    font-size: 15px;
+    color:rgb(255, 255, 255);
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    transition: .4s;
+    text-decoration: none;
+    list-style: none;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*Distância a borda*/
+ul li:hover a{
+    padding-left: 30px;
+}
+
+.sidebar i {
+    padding-right: 10px;
+}
+
+/*Titulo da página*/
+h2{
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+/*Botão de pesquisar/atualizar/enviar/reserva/cadastrar*/
+.botao {
+    padding: 10px;
+    margin: 10;
+    color: aliceblue;
+    background-color: green;    
+    border: none;
+}
+
+/*Espaço entre a tabela ao sidebar*/
+.conteudo-cabeçario{
+    margin-left: 250px;
+}
+
+/*TABELA*/
+.table, tr, td, th{
+    border: 1px solid rgb(179, 179, 179);
+    border-collapse: collapse;
+    width: 1000px;
+    height: 50px;
+    text-align: center;
+    margin-left: 250px;
+}
+
+/*Titulo da tabela*/
+.table-thead {
+    background-color: rgb(74, 190, 70);
+}
+
+/*Linhas da tabela*/
+.table tbody tr:nth-child(even) {
+    background-color: rgb(208, 211, 211);
+}
+
+
+/*Botao delete #Tabela Produtos*/
+.btn-danger{
+    border-radius: 10px ;
+    border: none;
+    background: red;
+    width: 80px;
+    height: 40px;
+    color: aliceblue;
+}
+
+/*Botao para reservar #reserva*/
+.input-reserva {
+    background-color: rgb(245, 19, 19);
+    color: aliceblue;
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    outline: none;
+}
+
+/*Botao de seleção de produtos*/
+.select {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    outline: none;
+}
+
+/*Campo onde o usuário digita*/
+.input {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    outline: none;
+}
