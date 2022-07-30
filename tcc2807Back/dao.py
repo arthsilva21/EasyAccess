@@ -4,7 +4,7 @@ import mysql.connector
 def conecta():
     return mysql.connector.connect(host="localhost",
                                    user="root",
-                                   password="@Rth1598",
+                                   password="admin",
                                    database="dboAlmoxarife")
 
 #Select no banco 'table usuarios' para logar no sistema
