@@ -11,25 +11,14 @@ body {
     background-color: rgb(248, 244, 244);
 }
 
-/*imagem*/
+/*Imagem de login*/
 .img {
     text-align: center;
     padding-top: 150px;
 }
 
-.navbar {
-    background-color: red;
-}
 
-.desconectar {
-    padding-left: 25px;
-    position: absolute;
-    right: 40px;
-    text-decoration: none;
-    color: white;
-}
-
-/*o box do login*/
+/*O box do login*/
 .content-center {
     width: 100%;
     max-width: 350px;
@@ -56,7 +45,7 @@ body {
     border-color:rgb(245, 19, 19);
 }
 
-/*input pro usuario digitar #login*/
+/*Input pro usuario digitar #login*/
 .content-form input {
     color: rgb(0, 0, 0);
     border: none;
@@ -69,7 +58,7 @@ body {
     outline: none;
 }
 
-/*botão do login*/
+/*Botão do login*/
 #btn-submit {
     background-color: rgb(245, 19, 19);
     color: aliceblue;
@@ -83,35 +72,38 @@ body {
     outline: none;
 }
 
-
-
-/*espaço entre a img e a borda vermelha #home*/
+/*Navebar*/
 .navbar {
+    background-color: red;
     padding: 30px;
     margin-top: 0px;
 }
 
+/*Icone desconectar*/
+.desconectar {
+    padding-left: 25px;
+    position: absolute;
+    right: 40px;
+    text-decoration: none;
+    color: white;
+}
 
-
-/*sidebar lateral #topicos*/
+/*Sidebar lateral #topicos*/
 .sidebar{
     position: fixed;
     width: 220px;
     height: 100%;
     background: rgb(43, 40, 40);
-   
-
 }
 
-/*links #topicos*/
+/*Links #topicos*/
 a.nav-link{
     color: black;
     padding: 0.6rem;
     display: inline-block;
-
 } 
 
-/*efeitos #topicos*/
+/*Efeitos #topicos*/
 .sidebar li a{
     display: block;
     height: 100%;
@@ -129,6 +121,7 @@ a.nav-link{
     padding-bottom: 20px;
 }
 
+/*Distância a borda*/
 ul li:hover a{
     padding-left: 30px;
 }
@@ -137,62 +130,48 @@ ul li:hover a{
     padding-right: 10px;
 }
 
-/*tabela produto*/
-
+/*Titulo da página*/
 h2{
     padding-bottom: 30px;
     padding-top: 30px;
 }
 
-.btn-cadastrar,
-.cadastrar-produto {
-    margin: 10px;
+/*Botão de pesquisar/atualizar/enviar/reserva/cadastrar*/
+.botao {
     padding: 10px;
-    
-}
-
-.pesquisa-produto {
-    margin: 10px;
-    margin-left: 0;
-    padding: 10px;
-
-}
-
-
-.btn-pesquisar {
-    padding: 10px;
+    margin: 10;
     color: aliceblue;
-    background-color: green;
-    margin: 0;
+    background-color: green;    
     border: none;
 }
 
-/*espaço do conteudo ao sidebar*/
-.produto{
+/*Espaço entre a tabela ao sidebar*/
+.conteudo-cabeçario{
     margin-left: 250px;
-    
 }
 
-/*tabela*/
-.table-produto, tr, td, th{
+/*TABELA*/
+.table, tr, td, th{
     border: 1px solid rgb(179, 179, 179);
     border-collapse: collapse;
     width: 1000px;
     height: 50px;
     text-align: center;
+    margin-left: 250px;
 }
 
-/*titulo da tabela*/
+/*Titulo da tabela*/
 .table-thead {
     background-color: rgb(74, 190, 70);
 }
 
-/*linhas da tabela*/
-.table-produto tbody tr:nth-child(even) {
+/*Linhas da tabela*/
+.table tbody tr:nth-child(even) {
     background-color: rgb(208, 211, 211);
 }
 
-/*botao delete*/
+
+/*Botao delete #Tabela Produtos*/
 .btn-danger{
     border-radius: 10px ;
     border: none;
@@ -202,68 +181,7 @@ h2{
     color: aliceblue;
 }
 
-
-/*tabela relatorio*/
-.relatorio {
-    margin-left: 250px;
-}
-
-/*tabela #relatorio*/
-.table-relatorio {
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 800px;
-    height: 50px;
-    text-align: center;
-}
-
-/*titulo #relatorio*/
-.table-relatorio thead{
-    background-color: rgb(74, 190, 70);
-}
-
-
-
-/*reserva*/
-.reserva {
-    margin-left: 250px;
-}
-
-
-/*tabela #reserva*/
-.table-reserva {
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 800px;
-    height: 50px;
-    text-align: center;
-}
-
-/*botao de seleção*/
-.select {
-    color: rgb(0, 0, 0);
-    border: none;
-    border-bottom-color:rgb(255, 255, 255);
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    margin-bottom: 10px;
-    padding: 10px 5px;
-    outline: none;
-}
-
-/*botao para digitar #reserva*/
-.input-digitar {
-    color: rgb(0, 0, 0);
-    border: none;
-    border-bottom-color:rgb(255, 255, 255);
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    margin-bottom: 10px;
-    padding: 10px 5px;
-    outline: none;
-}
-
-/*botao para reservar #reserva*/
+/*Botao para reservar #reserva*/
 .input-reserva {
     background-color: rgb(245, 19, 19);
     color: aliceblue;
@@ -276,7 +194,26 @@ h2{
     outline: none;
 }
 
+/*Botao de seleção de produtos*/
+.select {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    outline: none;
+}
 
-.content-relatorio {
-    padding-left: 300px;
+/*Campo onde o usuário digita*/
+.input {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    outline: none;
 }

@@ -5,7 +5,7 @@
 {% block content %}
 
 
-<form action="emprestimo" method="post" class="relatorio">
+<form action="emprestimo" method="post" class="conteudo-cabeçario">
     <h2>EMPRESTIMO</h2>
     <!--Criação do formato de tabela -->
     <select name="nome_produto" class="select" aria-label=".form-select-sm example">
@@ -17,23 +17,18 @@
         {%endfor%}
 
     </select>
-    <br>
-    <input type="text" name="quantidade" placeholder="Quantidade">
-    <br>
-    <input type="text" name="solicitante" placeholder="Solicitante">
-    <br>
-    <input type="text" name="responsavel" placeholder="Responsavel">
-    <br>
-    <input type="datetime-local" name="hora_do_emprestimo" placeholder="Data">
-    <br>
-    <input type="submit" name="enviar" placeholder="Enviar">
+
+    <input class="input" type="text" name="quantidade" placeholder="Quantidade">
+    <input class="input" type="text" name="solicitante" placeholder="Solicitante">
+    <input class="input" type="text" name="responsavel" placeholder="Responsavel">
+    <input class="input" type="datetime-local" name="hora_do_emprestimo" placeholder="Data">
+    <input class="botao" type="submit" name="enviar" placeholder="Enviar">
     
 </form>
 
-
     <!--Criação do formato de tabela -->
-    <table class="table-relatorio">
-        <thead>
+    <table class="table">
+        <thead class="table-thead">
             <tr>
                 <th scope="col">Produto</th>
                 <th scope="col">Quantidade</th>
@@ -55,12 +50,12 @@
                 <!-- Botão vinculado diretamente com o produto -->
                 <form action="produtoDevolucao" method="post" class="produto">
                     <td>
-                        <input type="text" value="{{ relatorio[1]}}" name="nome_produto" hidden>
-                        <input type="text" value="{{ relatorio[2]}}" name="quantidade" hidden>
-                        <input type="text" value="{{ relatorio[3]}}" name="solicitante" hidden>
-                        <input type="text" value="{{ relatorio[4]}}" name="responsavel" hidden>
-                        <input type="text" value="{{ relatorio[5]}}" name="hora_do_emprestimo" hidden>
-                        <input type="submit" value="Devolver" class="btn btn-danger">
+                        <input class="input" type="text" value="{{ relatorio[1]}}" name="nome_produto" hidden>
+                        <input class="input" type="text" value="{{ relatorio[2]}}" name="quantidade" hidden>
+                        <input class="input" type="text" value="{{ relatorio[3]}}" name="solicitante" hidden>
+                        <input class="input" type="text" value="{{ relatorio[4]}}" name="responsavel" hidden>
+                        <input class="input" type="text" value="{{ relatorio[5]}}" name="hora_do_emprestimo" hidden>
+                        <input class="btn btn-danger" type="submit" value="Devolver">
                     </td>
                 </form>
             </tr>

@@ -6,16 +6,16 @@
 
 
 
-<form action="produto" method="post" class="produto">
+<form action="produto" method="post" class="conteudo-cabeçario">
   
   <h2>PRODUTOS</h2>
-  <input class="pesquisa-produto" type="text" name="pesquisarProduto" placeholder="Pesquisar Produto">
-  <button class="btn-pesquisar"> Pesquisar </button>
+  <input class="input" type="text" name="pesquisarProduto" placeholder="Pesquisar Produto">
+  <button class="botao"> Pesquisar </button>
 
 </form>
 
 
-<table class="table-produto">
+<table class="table">
   <thead class=table-thead>
     <tr>
       <th scope="col">Produto</th>
@@ -37,7 +37,7 @@
       <form action="produtoExclusao" method="post" class="produto">
         <td>
           <input type="text" value="{{ chamado[0]}}" name="id_excluir" hidden>
-          <input type="submit" value="Deletar" class="btn btn-danger">
+          <input class="btn btn-danger" type="submit" value="Deletar">
         </td>
       </form>
       </tr>

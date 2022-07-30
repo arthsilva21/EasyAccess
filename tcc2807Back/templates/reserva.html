@@ -6,8 +6,8 @@
 {% block content %}
 
 
-<form action="reserva" method="post" class="reserva">
-  <h2>Deseja reservar um produto?</h2>
+<form action="reserva" method="post" class="conteudo-cabeçario">
+  <h2>DESEJA RESERVAR UM PRODUTO?</h2>
 
   <select name="reservar_select" class="select" aria-label=".form-select-sm example">
     <!--Lógica para o usuario selecionar material diretamente do banco de dados-->
@@ -19,18 +19,18 @@
 
   </select>
 
-  <input type="text" placeholder="Solicitante" class="input-digitar" name="solicitante">
-  <input type="text" placeholder="Quantidade" class="input-digitar" name="quantidade">
-  <input type="datetime-local" name="hora_da_reserva">
+  <input  class="input" type="text" placeholder="Solicitante" name="solicitante">
+  <input  class="input" type="text" placeholder="Quantidade" name="quantidade">
+  <input class="input" type="datetime-local" name="hora_da_reserva">
 
   <br>
   <br>
-  <input value="Reservar" type="submit" class="input-reserva">
+  <input class="botao" value="Reservar" type="submit">
 </form>
   
   <!--Criação do formato de tabela -->
-  <table class="table-reserva">
-    <thead>
+  <table class="table">
+    <thead class="table-thead">
       <tr>
         <th scope="col">Produto</th>
         <th scope="col">Solicitante</th>

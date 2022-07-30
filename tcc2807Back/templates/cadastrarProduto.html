@@ -5,7 +5,7 @@
 {% extends "home.html" %}
 {% block content %}
 
-<form action="atualizarProduto" method="post" class="produto">
+<form action="atualizarProduto" method="post" class="conteudo-cabeçario">
     <h2>ATUALIZAR PRODUTOS</h2>
     <select name="nome_produto_select" class="select" aria-label=".form-select-sm example">
         <!--Lógica para o usuario selecionar material diretamente do banco de dados-->
@@ -16,14 +16,14 @@
         {%endfor%}
 
     </select>
-    <input class="cadastrar-produto" type="number" name="atualizar_quantidade" placeholder="Quantidade">
-    <button class="btn-cadastrar"> Atualizar </button>
+    <input class="input" type="number" name="atualizar_quantidade" placeholder="Quantidade">
+    <button class="botao"> Atualizar </button>
 </form>
-<form action="cadastrarProduto" method="post" class="produto">
-    <h2>Cadastrar novo produto</h2>
-    <input class="cadastrar-produto" type="text" name="nome_produto" placeholder="Produto">
-    <input class="cadastrar-produto" type="number" name="quantidade" placeholder="Quantidade">
-    <input class="cadastrar-produto" type="text" name="localizacao" placeholder="Localização">
-    <button class="btn-cadastrar"> Cadastrar </button>
+<form action="cadastrarProduto" method="post" class="conteudo-cabeçario">
+    <h2>CADASTRAR NOVO PRODUTO</h2>
+    <input class="input" type="text" name="nome_produto" placeholder="Produto">
+    <input class="input" type="number" name="quantidade" placeholder="Quantidade">
+    <input class="input" type="text" name="localizacao" placeholder="Localização">
+    <button class="botao"> Cadastrar </button>
 </form>
 {% endblock %}

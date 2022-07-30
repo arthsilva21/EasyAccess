@@ -5,16 +5,16 @@
 {% block content %}
 
 
-<form class="content-relatorio" action="filtroRelatorio" method="post">
+<form class="conteudo-cabeçario" action="filtroRelatorio" method="post">
     <h2>Relatório do patrimônio</h2>
-    <input type="datetime-local" name="hora_do_emprestimo">
-    <input type="datetime-local" name="hora_da_devolucao">
-    <input type="submit" value="Pesquisar">
+    <input class="input" type="datetime-local" name="hora_do_emprestimo">
+    <input class="input" type="datetime-local" name="hora_da_devolucao">
+    <input class="botao" type="submit" value="Pesquisar">
 </form>
 <!--Criação do formato de tabela -->
-<form action="relatorio" method="post" class="relatorio">
-    <table class="table-relatorio">
-        <thead>
+<form action="relatorio" method="post">
+    <table class="table">
+        <thead class="table-thead">
             <tr>
                 <th scope="col">Produto</th>
                 <th scope="col">Quantidade</th>
