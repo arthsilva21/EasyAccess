@@ -2,6 +2,9 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask import session
 import dao
 from datetime import datetime
+import smtplib
+import email.message
+
 
 app = Flask(__name__)
 app.secret_key = 'autorizado'
@@ -29,6 +32,39 @@ def Login():
         return redirect(url_for('Home'))
     return render_template("index.html")
 
+#Funcao para abrir tela de recuperacao de senha
+@app.route("/recuperarSenha")
+def AbrirRecuperarSenha():
+    return render_template("recuperarSenha.html")
+
+#Funcao para enviar email de recuperação de usuario e senha
+@app.route("/recuperarSenha", methods=['POST'])
+def RecuperarSenha():   
+    emailP = request.form['email']
+    if dao.RecuperarSenha(emailP):
+        usuario = dao.RecuperarUsuario(emailP)
+        senha = dao.RecuperarSenha(emailP)
+        corpo_email = """
+        <p>Bem vindo a recuperação de conta</p>
+        <p>Aqui está o seu usuário:</p>
+        """  + str(usuario[0]).strip('(,)') +  """<p>Aqui está a sua senha:</p>""" + str(senha[0]).strip('(,)')
+
+        msg = email.message.Message()
+        msg['Subject'] = "Recuperando sua senha do login"
+        msg['From'] = "easyaccessenai@gmail.com"
+        msg['To'] = emailP
+        password = "osziyjquovefcgpt"
+        msg.add_header('Content-Type', 'text/html')
+        msg.set_payload(corpo_email)
+
+        s = smtplib.SMTP('smtp.gmail.com: 587')
+        s.starttls()
+        #Login credentials for sending the mail
+        s.login(msg['From'], password)
+        s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))       
+
+    return AbrirRecuperarSenha()
+
 
 #Funcao para abrir tela onde pode cadastrar novo usuario
 @app.route("/cadastrarUsuario")
@@ -36,15 +72,14 @@ def AbrirCadastroUsuario():
     return render_template("cadastrarUsuario.html")
 
 #Funçao para inserir novo usuario
-
-
 @app.route("/cadastrarUsuario", methods=["POST"])
 def CadastrarUsuario():
     username = request.form["username"]
+    email = request.form["email"]
     senha = request.form["senha"]
     validarSenha = request.form["validarSenha"]
     if senha == validarSenha:
-        dao.cadastrarUsuario(username, senha)
+        dao.CadastrarUsuario(username, email, senha)
         return redirect(url_for('Iniciar'))
     return AbrirCadastroUsuario()
 
@@ -77,7 +112,7 @@ def Produtos():
 @app.route('/produtoExclusao', methods=['POST'])
 def Excluir():
     id_produto = request.form['id_excluir']
-    dao.excluirProduto(id_produto)
+    dao.ExcluirProduto(id_produto)
     return render_template('produto.html', lista=dao.Produtos())
 
 
@@ -102,7 +137,7 @@ def InserirProduto():
     nome_produto = request.form['nome_produto']
     quantidade = request.form['quantidade']
     localizacao = request.form['localizacao']     
-    dao.inserirProduto(nome_produto, quantidade, localizacao)
+    dao.InserirProduto(nome_produto, quantidade, localizacao)
     return AbrirCadastroProduto()
 
 #Funcao para abrir emprestimos com a lista de emprestimos

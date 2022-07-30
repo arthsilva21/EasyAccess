@@ -2,15 +2,10 @@ create database if not exists dboAlmoxarife;
 
 use dboAlmoxarife;
 
-create table usuarios(id int primary key auto_increment, usuario varchar(255) not null, senha varchar(255) not null);
+create table usuarios(id_usuario int primary key auto_increment, usuario varchar(255) not null, senha varchar(255) not null, email varchar(255) not null);
 
-insert into usuarios(usuario, senha) values ("admin", "admin");
-insert into usuarios(usuario, senha) values("antonio", "antonio");
-insert into usuarios(usuario, senha) values("arthur", "arthur");
-insert into usuarios(usuario, senha) values("lucas", "lucas");
 
 select * from usuarios;
-
 
 create table produtos(id int primary key auto_increment, nome_produto varchar(255) not null, quantidade int not null, localizacao varchar(255));
 
@@ -41,3 +36,6 @@ create table relatorios(id_relatorio int primary key auto_increment, nome_produt
 update produtos set quantidade = quantidade - %s where nome_produto = %s;
 
 select * from relatorios r where hora_do_emprestimo between '2022-07-24 20:50:00' and '2022-07-27 20:52:30';
+
+select usuario from usuarios where email like %s
+select senha from usuarios where email like %s

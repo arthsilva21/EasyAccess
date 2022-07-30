@@ -17,14 +17,32 @@ def Logar(usuario, senha):
     return cursor.fetchall()
 
 #Insert na tabela usuarios para cadastrar novo login do sistema
-def cadastrarUsuario(usuario, senha):
+def CadastrarUsuario(usuario, email, senha):
     bd = conecta()
     cursor = bd.cursor()
-    sql = "insert into usuarios(usuario, senha) values (%s, %s)"
-    values = (usuario, senha)
+    sql = "insert into usuarios(usuario, email, senha) values (%s, %s, %s)"
+    values = (usuario, email, senha)
     cursor.execute(sql, values)
     bd.commit()
     return "Usuario inserido com sucesso"
+
+#Select na tabela usuarios para obter dados e enviar usuario para email cadastrado para recuperaçao
+def RecuperarUsuario(email):
+    bd = conecta()
+    cursor = bd.cursor()
+    sql = "select usuario from usuarios where email like %s"
+    values = (email,)
+    cursor.execute(sql, values)
+    return cursor.fetchall()
+
+#Select na tabela usuarios para obter dados e enviar senha para email cadastrado para recuperaçao
+def RecuperarSenha(email):
+    bd = conecta()
+    cursor = bd.cursor()
+    sql = "select senha from usuarios where email like %s"
+    values = (email,)
+    cursor.execute(sql, values)
+    return cursor.fetchall()
 
 
 #Select na tabela produtos para carregar todos os produtos
@@ -36,7 +54,7 @@ def Produtos():
     return cursor.fetchall()
 
 #Insert na tabela produtos para inserir dados na tabela de produtos
-def inserirProduto(nome_produto, quantidade, localizacao):
+def InserirProduto(nome_produto, quantidade, localizacao):
     bd = conecta()
     cursor = bd.cursor()
     sql = "insert into produtos(nome_produto, quantidade, localizacao) values (%s, %s, %s)"
@@ -58,7 +76,7 @@ def PesquisarProduto(nome):
 
 
 #Delete em produto na tabela de produtos
-def excluirProduto(id):
+def ExcluirProduto(id):
     bd = conecta()
     cursor = bd.cursor()
     sql = "delete from produtos where id = %s"
@@ -66,45 +84,6 @@ def excluirProduto(id):
     cursor.execute(sql, valor)
     bd.commit()
     return 'Deletado'
-
-#Update na tabela de produtos para atualizar produtos disponiveis para emprestimos
-# def atualizarEstoque(quantidade, nome_produto):
-#     bd = conecta()
-#     cursor = bd.cursor()
-#     quantidade_atual = buscaQuantidade(nome_produto)
-#     if quantidade_atual >= int(quantidade):
-#         total = int(quantidade_atual) - int(quantidade)
-#         sql = "update produtos set quantidade = %s where nome_produto = %s"
-#         valores = (total, nome_produto)
-#         cursor.execute(sql, valores)
-#         bd.commit()
-#     else:
-#         return 'Quantidade invalida!'
-
-# #Adicionar a um produto existente um valor maior na quantidade
-# #SEM USO
-# def adicionarEstoque(quantidade, nome_produto):
-#     bd = conecta()
-#     cursor = bd.cursor()
-#     quantidade_atual = buscaQuantidade(nome_produto)
-#     if quantidade_atual >= int(quantidade):
-#         total = int(quantidade_atual) + int(quantidade)
-#         sql = "update produtos set quantidade = %s where nome_produto = %s"
-#         valores = (total, nome_produto)
-#         cursor.execute(sql, valores)
-#         bd.commit()
-
-
-# #Buscar quantidade disponivel 
-# #SEM USO
-# def buscaQuantidade(nome):
-#     bd = conecta()
-#     cursor = bd.cursor()
-#     ss = "select quantidade from produtos where nome_produto like %s"
-#     valor = (nome,)
-#     cursor.execute(ss, valor)
-#     quanti = cursor.fetchone()
-#     return int(quanti[0])
 
 #Select apenas nome do produto na tabela de produtos
 def VerProdutos():
