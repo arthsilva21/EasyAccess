@@ -183,10 +183,11 @@ def SubtrairQuantidadeProdutos(quantidade, nome_produto):
 
 
 #Update na tabela produtos para quando chegar novos produtos e quando voltar de emprestimo
-def SomarQuantidadeProdutos(quantidade, nome_produto):
+def soamr(quantidade, nome_produto):
     bd = conecta()
     cursor = bd.cursor()
     sql = "update produtos set quantidade = quantidade + %s where nome_produto like %s"
     values = (quantidade, nome_produto)
     cursor.execute(sql, values) 
+
     bd.commit()
