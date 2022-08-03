@@ -4,7 +4,7 @@ import mysql.connector
 def conecta():
     return mysql.connector.connect(host="localhost",
                                    user="root",
-                                   password="admin",
+                                   password="@Rth1598",
                                    database="dboAlmoxarife")
 
 #Select no banco 'table usuarios' para logar no sistema
@@ -53,17 +53,6 @@ def Produtos():
     cursor.execute(sql)
     return cursor.fetchall()
 
-#Insert na tabela produtos para inserir dados na tabela de produtos
-def InserirProduto(nome_produto, quantidade, localizacao):
-    bd = conecta()
-    cursor = bd.cursor()
-    sql = "insert into produtos(nome_produto, quantidade, localizacao) values (%s, %s, %s)"
-    valores = (nome_produto, quantidade, localizacao)
-    cursor.execute(sql, valores)
-    bd.commit()
-    return "inserido"
-
-
 #Select na tabela produto para ter apenas o produto desejado
 def PesquisarProduto(nome):
     bd = conecta()
@@ -73,7 +62,6 @@ def PesquisarProduto(nome):
     valores = (filtro,)
     cursor.execute(sql, valores)
     return cursor.fetchall()
-
 
 #Delete em produto na tabela de produtos
 def ExcluirProduto(id):
@@ -85,7 +73,18 @@ def ExcluirProduto(id):
     bd.commit()
     return 'Deletado'
 
-#Select apenas nome do produto na tabela de produtos
+#Insert na tabela produtos para inserir dados na tabela de produtos
+def InserirProduto(nome_produto, quantidade, localizacao):
+    bd = conecta()
+    cursor = bd.cursor()
+    sql = "insert into produtos(nome_produto, quantidade, localizacao) values (%s, %s, %s)"
+    valores = (nome_produto, quantidade, localizacao)
+    cursor.execute(sql, valores)
+    bd.commit()
+    return "inserido"
+
+
+#Select apenas nome do produto na tabela de produtos para carregar no select de atualizar
 def VerProdutos():
     bd = conecta()
     cursor = bd.cursor()
@@ -154,7 +153,7 @@ def Relatorios():
     cursor.execute(sql)
     return cursor.fetchall()
 
-#Insert para inserir novo dado em relatorio
+#Insert para inserir novo dado em relatorio quando excluir de emprestimo
 def InserirRelatorio(nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo, hora_da_devolucao):
     bd = conecta()
     cursor = bd.cursor()
@@ -168,7 +167,7 @@ def InserirRelatorio(nome_produto, quantidade, solicitante, responsavel, hora_do
 def FiltroRelatorio(hora_do_emprestimo, hora_da_devolucao):
     bd = conecta()
     cursor = bd.cursor()
-    sql = "select * from relatorios where hora_do_emprestimo between %s and %s"
+    sql = "select nome_produto, quantidade, solicitante, responsavel, hora_do_emprestimo, hora_da_devolucao from relatorios where hora_do_emprestimo between %s and %s"
     values = (hora_do_emprestimo, hora_da_devolucao)
     cursor.execute(sql, values)
     return cursor.fetchall()
@@ -183,7 +182,7 @@ def SubtrairQuantidadeProdutos(quantidade, nome_produto):
     bd.commit()
 
 
-#Update na tabela produtos para quando for realizado a devolucao do emprestimo aumentar a quantidade disponivel
+#Update na tabela produtos para quando chegar novos produtos e quando voltar de emprestimo
 def SomarQuantidadeProdutos(quantidade, nome_produto):
     bd = conecta()
     cursor = bd.cursor()
