@@ -221,4 +221,5 @@ def Logout():
     return redirect(url_for('Iniciar'))
 
 
+#Funcao para debugar sem precisar parar o projeto
 app.run(debug=True)
