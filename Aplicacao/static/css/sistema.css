@@ -4,83 +4,66 @@
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
+    font-family:sans-serif;
 }
 
-/*corpo do site*/
+/*Corpo do sistema*/
 body {
     background-color: rgb(248, 244, 244);
 }
 
-/*Imagem de login*/
-.container-img {
-    text-align: center;
-    padding-top: 150px;
-
-}
-
-img {
-    max-width: 90%;
-}
-
-/*O box do login*/
-.content-center {
-    width: 90%;
-    max-width: 350px;
-    margin:auto;
-    margin-top: 30px;
-    padding: 20px;
-    background-color: rgb(226, 225, 225);
-    border-radius: 15px;
-}
-
-.content-center .text-center {
-    text-align: center;
-}
-
-
-.content-center form {
-    margin: 20px;
-}
-
-.content-form input:focus{
-    border-color:rgb(245, 19, 19);
-}
-
-
-/*Input pro usuario digitar #login*/
-.content-form input {
-    color: rgb(0, 0, 0);
-    border: none;
-    border-bottom-color:rgb(255, 255, 255);
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px 5px;
-    outline: none;
-}
-
-/*Botão do login*/
-#btn-submit {
+/*Cabeçario do sistema*/
+.navbar{
     background-color: rgb(245, 19, 19);
-    color: aliceblue;
-    border: none;
-    border-bottom-color:rgb(255, 255, 255);
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px 5px;
-    outline: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
-/*Link de recuperar e cadastrar login*/
+.desconectar{
+    color: white;
+    text-decoration: none;
+
+}
+
+/*Divisão de colunas entre os tópicos e a tabela*/
+.container-grid{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 1fr;
+    overflow-x: auto;
+    
+}
+
+/*Espaço do sidebar ao conteúdo*/
+.container {
+    margin-left: 30px;
+}
+
+/*Sidebar*/
+.sidebar{
+    width: 220px;
+    height: 30000;
+    background: rgb(43, 40, 40);
+}
+
+/*Links #topicos*/
+.nav-link a{
+    color: rgb(255, 255, 255);
+    padding: 0.6rem;
+    display: inline-block;
+} 
+
+/*Animação da borda vermelha nos links*/
 a {
     text-decoration: none;
     position: relative;
     color: rgb(43, 43, 43);
 }
 
+/*Animação da borda  vermelha nos links*/
 a::after {
     content: " ";
     width: 0%;
@@ -92,42 +75,10 @@ a::after {
     transition: 0.5s ease-in-out;
 }
 
+/*Animação da borda vermelha nos links*/
 a:hover::after {
     width: 100%;
 }
-
-/*Navebar*/
-.navbar {
-    background-color: red;
-    padding: 30px;
-    margin-top: 0px;
-    width: 100%;
-
-}
-
-/*Icone desconectar*/
-.desconectar {
-    padding-left: 25px;
-    position: absolute;
-    right: 40px;
-    text-decoration: none;
-    color: white;
-}
-
-/*Sidebar lateral #topicos*/
-.sidebar{
-    position: fixed;
-    width: 220px;
-    height: 100%;
-    background: rgb(43, 40, 40);
-}
-
-/*Links #topicos*/
-a.nav-link{
-    color: black;
-    padding: 0.6rem;
-    display: inline-block;
-} 
 
 /*Efeitos #topicos*/
 .sidebar li a{
@@ -147,25 +98,15 @@ a.nav-link{
     padding-bottom: 20px;
 }
 
-/*Distância a borda*/
+/*Distância da borda #topicos*/
 ul li:hover a{
     padding-left: 30px;
 }
 
+/*Espaço do item dos topicos*/
 .sidebar i {
     padding-right: 10px;
 }
-
-/*Modo responsivo do sistema*/
-@media (max-width:600px) {
-    .sidebar a span {
-        display: none;
-    }
-    .sidebar{
-        width: 70px;
-    }
-}
-
 
 /*Titulo da página*/
 h2{
@@ -182,10 +123,12 @@ h2{
     border: none;
 }
 
-/*Espaço entre a tabela ao sidebar*/
-.conteudo-cabeçario{
-    margin-left: 250px;
+/*Botão de pesquisar/atualizar/enviar/reserva/cadastrar mudar de cor*/
+.botao:hover {
+    background-color:rgb(4, 109, 4);
+    cursor: pointer;
 }
+
 
 /*TABELA*/
 .table, tr, td, th{
@@ -194,7 +137,7 @@ h2{
     width: 1000px;
     height: 50px;
     text-align: center;
-    margin-left: 250px;
+    table-layout: auto;
 }
 
 /*Titulo da tabela*/
@@ -207,8 +150,7 @@ h2{
     background-color: rgb(208, 211, 211);
 }
 
-
-/*Botao delete #Tabela Produtos*/
+/*Botão delete #Tabela Produtos*/
 .btn-danger{
     border-radius: 10px ;
     border: none;
@@ -218,7 +160,13 @@ h2{
     color: aliceblue;
 }
 
-/*Botao para reservar #reserva*/
+/*Botão delete mudar a cor #Tabela Produtos*/
+.btn-danger:hover{
+    background-color: rgb(175, 25, 25);
+    cursor: pointer;
+}
+
+/*Botão para reservar #reserva*/
 .input-reserva {
     background-color: rgb(245, 19, 19);
     color: aliceblue;
@@ -229,9 +177,10 @@ h2{
     margin-bottom: 10px;
     padding: 10px 5px;
     outline: none;
+    
 }
 
-/*Botao de seleção de produtos*/
+/*Botão de seleção de produtos*/
 .select {
     color: rgb(0, 0, 0);
     border: none;
@@ -241,6 +190,7 @@ h2{
     margin-bottom: 10px;
     padding: 10px 5px;
     outline: none;
+    
 }
 
 /*Campo onde o usuário digita*/
@@ -253,4 +203,41 @@ h2{
     margin-bottom: 10px;
     padding: 10px 5px;
     outline: none;
+}
+
+
+@media(max-width:500px){
+    .container-grid .sidebar {
+        max-width: 50px;
+    }
+    .sidebar a span{
+        display: none;
+    }
+    .container-grid {
+        grid-template-columns: 30px 1fr;
+    }
+    .table {
+        width: 300px;
+        font-size: 13px;
+        overflow:auto;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    .btn-danger {
+        border-radius: 5px ;
+        width: 40px;
+        height: 20px;
+        font-size: 10px;
+    }
+    .botao {
+        padding: 5px;
+        margin: 5;
+    }
+    .input{
+        padding: 5px 2px;
+    }
+    .header{
+        width: 100%;
+    }
 }

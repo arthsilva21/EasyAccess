@@ -5,7 +5,7 @@
 {% extends "home.html" %}
 {% block content %}
 
-
+<div class="container">
 <form action="reserva" method="post" class="conteudo-cabeçario">
   <h2>DESEJA RESERVAR UM PRODUTO?</h2>
 
@@ -22,10 +22,8 @@
   <input  class="input" type="text" placeholder="Solicitante" name="solicitante">
   <input  class="input" type="text" placeholder="Quantidade" name="quantidade">
   <input class="input" type="datetime-local" name="hora_da_reserva">
-
-  <br>
-  <br>
   <input class="botao" value="Reservar" type="submit">
+  <br>
 </form>
   
   <!--Criação do formato de tabela -->
@@ -58,9 +56,7 @@
       {% endfor %}
     </tbody>
   </table>
-
   </select>
-
-
+</div>
 
 {% endblock %}

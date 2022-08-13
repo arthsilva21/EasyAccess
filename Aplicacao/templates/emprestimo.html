@@ -4,7 +4,7 @@
 {% extends "home.html" %}
 {% block content %}
 
-
+<div class="container">
 <form action="emprestimo" method="post" class="conteudo-cabeçario">
     <h2>EMPRESTIMO</h2>
     <!--Criação do formato de tabela -->
@@ -25,7 +25,6 @@
     <input class="botao" type="submit" name="enviar" placeholder="Enviar">
     
 </form>
-
     <!--Criação do formato de tabela -->
     <table class="table">
         <thead class="table-thead">
@@ -62,7 +61,7 @@
             {% endfor %}
         </tbody>
     </table>
-
+</div>
 
 
 {% endblock %}

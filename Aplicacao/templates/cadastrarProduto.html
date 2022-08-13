@@ -5,6 +5,7 @@
 {% extends "home.html" %}
 {% block content %}
 
+<div class="container">
 <form action="atualizarProduto" method="post" class="conteudo-cabeçario">
     <h2>ATUALIZAR PRODUTOS</h2>
     <select name="nome_produto_select" class="select" aria-label=".form-select-sm example">
@@ -13,7 +14,7 @@
 
         <option>{{ produto[0] }}</option>
 
-        {%endfor%}
+    {%endfor%}
 
     </select>
     <input class="input" type="number" name="atualizar_quantidade" placeholder="Quantidade">
@@ -26,4 +27,5 @@
     <input class="input" type="text" name="localizacao" placeholder="Localização">
     <button class="botao"> Cadastrar </button>
 </form>
+</div>
 {% endblock %}

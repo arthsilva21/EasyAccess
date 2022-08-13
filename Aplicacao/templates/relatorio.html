@@ -4,9 +4,9 @@
 {% extends "home.html" %}
 {% block content %}
 
-
+<div class="container">
 <form class="conteudo-cabeçario" action="filtroRelatorio" method="post">
-    <h2>Relatório do patrimônio</h2>
+    <h2>RELATÓRIO DE PATRIMÔNIO</h2>
     <input class="input" type="datetime-local" name="hora_do_emprestimo">
     <input class="input" type="datetime-local" name="hora_da_devolucao">
     <input class="botao" type="submit" value="Pesquisar">
@@ -38,11 +38,6 @@
             {% endfor %}
         </tbody>
     </table>
-
-
-
 </form>
-
-
-
+</div>
 {% endblock %}

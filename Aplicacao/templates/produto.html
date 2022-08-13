@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <!--Bloco para recarregar em uma unica pagina-->
 {% extends "home.html" %}
 {% block content %}
 
+<section>
+  <div class="container">
+    <form action="produto" method="post" class="conteudo-cabeçario">
+      <h2>PRODUTOS</h2>
+      <input class="input" type="text" name="pesquisarProduto" placeholder="Pesquisar Produto">
+      <button class="botao"> Pesquisar </button>
+    </form>
 
-
-<form action="produto" method="post" class="conteudo-cabeçario">
-  
-  <h2>PRODUTOS</h2>
-  <input class="input" type="text" name="pesquisarProduto" placeholder="Pesquisar Produto">
-  <button class="botao"> Pesquisar </button>
-
-</form>
-
-
-<table class="table">
-  <thead class=table-thead>
-    <tr>
-      <th scope="col">Produto</th>
-      <th scope="col">Quantidade Disponivel</th>
-      <th scope="col">Localização</th>
-      <th scope="col">Remover</th>
-    </tr>
-  </thead>
-  
+  <table class="table">
+    <thead class=table-thead>
+      <tr>
+        <th scope="col">Produto</th>
+        <th scope="col">Quantidade Disponivel</th>
+        <th scope="col">Localização</th>
+        <th scope="col">Remover</th>
+      </tr>
+    </thead>
   <tbody>
     <!--Lógica para preencher a tabela com os produtos diretamente do banco de dados-->
     {% for chamado in lista %}
@@ -34,18 +30,18 @@
       <td>{{ chamado[3] }}</td>
       
       <!-- Botão vinculado diretamente com o produto -->
-      <form action="produtoExclusao" method="post" class="produto">
-        <td>
-          <input type="text" value="{{ chamado[0]}}" name="id_excluir" hidden>
-          <input class="btn btn-danger" type="submit" value="Deletar">
-        </td>
-      </form>
-      </tr>
+    <form action="produtoExclusao" method="post" class="produto">
+      <td>
+        <input type="text" value="{{ chamado[0]}}" name="id_excluir" hidden>
+        <input class="btn btn-danger" type="submit" value="Deletar">
+      </td>
+    </form>
+    </tr>
       {% endfor %}
     </tbody>
-  </table>
-
-
+    </table>
+  </div>
+</section>
 
 
 

@@ -6,19 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> SENAI GO </title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="icon" href="../static/img/logoSenai.png">
+    <link rel="stylesheet" href="../static/css/login.css">
 </head>
 
 <body>
 
-    <div class="img">
+    <div class="container-img">
         <img src="../static/img/logoSenai.png" alt="Imagem de fundo">
     </div>
 
     <!-- para centralizar o conteúdo -->
     <section class="content-center">
         <form action="cadastrarUsuario" method="post" id="form-login">
-
+            <h3>Cadastrar novo Usuário</h3>
             <!--Input para mandar pro email, placeholder para exiber o que o campo faz, required é falando que o campo é obrigatorio  -->
             <div class="content-form">
                 <input type="username" name="username" placeholder="Usuário" required>
@@ -31,7 +32,7 @@
             </div>
 
             <div>
-                <input type="submit" placeholder="Entrar" id="btn-submit">
+                <input type="submit" value="Cadastrar" id="btn-submit">
             </div>
             <a href="/">Voltar para login</a>
         </form>
