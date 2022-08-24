@@ -1,5 +1,5 @@
 import mysql.connector
-import pymysql
+#import pymysql
 
 #1 - Usar no wamps
 #2 - Usar no cloud
@@ -54,7 +54,7 @@ def RecuperarSenha(email):
 def Produtos():
     bd = conecta()
     cursor = bd.cursor()
-    sql = "select * from produtos order by id desc"
+    sql = "select * from produtos order by id_produto desc"
     cursor.execute(sql)
     return cursor.fetchall()
 
@@ -72,7 +72,7 @@ def PesquisarProduto(nome):
 def ExcluirProduto(id):
     bd = conecta()
     cursor = bd.cursor()
-    sql = "delete from produtos where id = %s"
+    sql = "delete from produtos where id_produto = %s"
     valor = (id,)
     cursor.execute(sql, valor)
     bd.commit()
