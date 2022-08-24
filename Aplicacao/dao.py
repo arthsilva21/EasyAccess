@@ -1,10 +1,10 @@
 import mysql.connector
 
-
+#Logar ao BD da CLOUD. Instancia de maquina sql
 def conecta():
-    return mysql.connector.connect(host="localhost",
+    return mysql.connector.connect(host="34.122.178.27",
                                    user="root",
-                                   password="admin",
+                                   password="@Dmin",
                                    database="dboAlmoxarife")
 
 #Select no banco 'table usuarios' para logar no sistema
@@ -67,7 +67,7 @@ def PesquisarProduto(nome):
 def ExcluirProduto(id):
     bd = conecta()
     cursor = bd.cursor()
-    sql = "delete from produtos where id = %s"
+    sql = "delete from produtos where id_produtos = %s"
     valor = (id,)
     cursor.execute(sql, valor)
     bd.commit()
