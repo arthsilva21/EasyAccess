@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Bloco para recarregar em uma unica pagina-->
+{% extends "home.html" %}
+{% block content %}
+
+<div class="container">
+<form action="reserva" method="post" class="conteudo-cabeçario">
+  <h2>DESEJA RESERVAR UM PRODUTO?</h2>
+
+  <select name="reservar_select" class="select" aria-label=".form-select-sm example">
+    <!--Lógica para o usuario selecionar material diretamente do banco de dados-->
+    {% for produto in reserva %}
+
+    <option>{{ produto[0] }}</option>
+
+    {%endfor%}
+
+  </select>
+
+  <input  class="input" type="text" placeholder="Solicitante" name="solicitante">
+  <input  class="input" type="text" placeholder="Quantidade" name="quantidade">
+  <input class="input" type="datetime-local" name="hora_da_reserva">
+  <input class="botao" value="Reservar" type="submit">
+  <br>
+</form>
+  
+  <!--Criação do formato de tabela -->
+  <table class="table">
+    <thead class="table-thead">
+      <tr>
+        <th scope="col">Produto</th>
+        <th scope="col">Solicitante</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Lógica para adicionar dados diretamente do banco de dados-->
+      {% for reserva in lista %}
+      <tr>
+        <td>{{ reserva[1] }}</td>
+        <td>{{ reserva[2] }}</td>
+        <td>{{ reserva[3] }}</td>
+        <td>{{ reserva[4] }}</td>
+        <form action="reservaExclusao" method="post" class="produto">
+          <td>
+            <input type="text" value="{{ reserva[0]}}" name="id_reserva" hidden>
+            <input type="submit" value="Deletar" class="btn btn-danger">
+          </td>
+        </form>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </select>
+</div>
+
+{% endblock %}

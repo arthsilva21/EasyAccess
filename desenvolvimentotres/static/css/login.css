@@ -1,0 +1,106 @@
+/*Estiliza geral*/
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family:sans-serif;
+}
+
+/*corpo do site*/
+body {
+    background-color: rgb(248, 244, 244);
+}
+
+/*Imagem de login*/
+.container-img {
+    text-align: center;
+    padding-top: 120px;
+}
+
+img {
+    max-width: 90%;
+}
+
+/*O box do login*/
+.content-center {
+    width: 90%;
+    max-width: 350px;
+    margin:auto;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgb(226, 225, 225);
+    border-radius: 15px;
+}
+
+.content-center .text-center {
+    text-align: center;
+}
+
+.content-center form {
+    margin: 20px;
+}
+
+.content-form input:focus{
+    border-color:rgb(245, 19, 19);
+}
+
+
+/*Input pro usuario digitar #login*/
+.content-form input {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 5px;
+    outline: none;
+}
+
+/*Botão do login*/
+#btn-submit {
+    background-color: rgb(245, 19, 19);
+    color: aliceblue;
+    border: none;
+    border-bottom-color:rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 5px;
+    outline: none;
+}
+
+#btn-submit:hover{
+    background-color: rgb(218, 22, 22);
+    cursor: pointer;
+}
+
+/*Link de recuperar e cadastrar login*/
+a {
+    text-decoration: none;
+    position: relative;
+    color: rgb(43, 43, 43);
+}
+
+a::after {
+    content: " ";
+    width: 0%;
+    height: 2px;
+    background-color: rgb(245, 19, 19);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s ease-in-out;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+h3 {
+    padding-bottom: 20px;
+}
+

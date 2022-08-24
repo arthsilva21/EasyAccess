@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/sistema.css">
+    <link rel="icon" href="../static/img/logoSenai.png">
+    <script src="https://kit.fontawesome.com/37aaf3f1ce.js" crossorigin="anonymous"></script>
+    <title>Senai GO - Home</title>
+</head>
+
+<body>
+    <!-- Navbar content -->
+    <!--IMAGEM-->
+    <header>
+        <nav class="navbar">
+            <a href="home"><img src="../static/img/logoSenai.png" width="100" height="30"></a>
+            <a class="desconectar" href="/">Sair &nbsp<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </nav>
+    </header>
+
+    <!--AÇÕES-->
+    <section class="container-grid">
+    <div class="sidebar">
+        <ul class="nav-link">
+            <li><a href="produto"><i class="fa-solid fa-box-archive"></i><span>Produto</span></a> </li>
+            
+            <li><a href="cadastrarProduto"><i class="fa-solid fa-cash-register"></i> <span>Cadastrar Produto</span></a> </li>
+
+            <li><a href="emprestimo"><i class="fa-solid fa-code-compare"></i> <span>Empréstimo</span> </a></li>
+            
+            <li><a href="reserva"><i class="fa-solid fa-file-signature"></i> <span>Reserva</span> </a></li>
+            
+            <li><a href="relatorio"><i class="fa-solid fa-newspaper"></i> <span>Relatório</span> </a></li>
+        </ul>
+    </div>
+       <!--Bloco para recarregar nesta pagina-->
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+
+</html>
