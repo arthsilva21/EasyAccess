@@ -112,7 +112,9 @@ def Produtos():
 @app.route('/produtoExclusao', methods=['POST'])
 def Excluir():
     id_produto = request.form['id_excluir']
-    dao.ExcluirProduto(id_produto)
+    if id_produto != None:
+        dao.ExcluirProduto(id_produto)
+        return redirect(url_for('Produtos'))
     return render_template('produto.html', lista=dao.Produtos())
 
 

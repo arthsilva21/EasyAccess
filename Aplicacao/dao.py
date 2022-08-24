@@ -1,7 +1,12 @@
 import mysql.connector
+import pymysql
 
-#Logar ao BD da CLOUD. Instancia de maquina sql
+#1 - Usar no wamps
+#2 - Usar no cloud
 def conecta():
+    #1
+    #return pymysql.connect(user="root", password="@Dmin", host="localhost", database="dboAlmoxarife")
+    #2
     return mysql.connector.connect(host="34.122.178.27",
                                    user="root",
                                    password="@Dmin",
@@ -67,7 +72,7 @@ def PesquisarProduto(nome):
 def ExcluirProduto(id):
     bd = conecta()
     cursor = bd.cursor()
-    sql = "delete from produtos where id_produtos = %s"
+    sql = "delete from produtos where id = %s"
     valor = (id,)
     cursor.execute(sql, valor)
     bd.commit()
@@ -183,7 +188,7 @@ def SubtrairQuantidadeProdutos(quantidade, nome_produto):
 
 
 #Update na tabela produtos para quando chegar novos produtos e quando voltar de emprestimo
-def soamr(quantidade, nome_produto):
+def SomarQuantidadeProdutos(quantidade, nome_produto):
     bd = conecta()
     cursor = bd.cursor()
     sql = "update produtos set quantidade = quantidade + %s where nome_produto like %s"
