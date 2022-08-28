@@ -18,8 +18,17 @@
 
     <!-- para centralizar o conteúdo -->
     <section class="content-center">
+        
+        <h3>Login</h3>
+        {% set mensagens = get_flashed_messages() %}
+        {% if mensagens %}
+        <div>
+            {% for msg in mensagens %}
+            {{ msg }}
+            {% endfor %}
+        </div>
+        {% endif %}
         <form action="login" method="post" id="form-login">
-            <h3>Login</h3>
             <!--Input para mandar pro email, placeholder para exiber o que o campo faz, required é falando que o campo é obrigatorio  -->
             <div class="content-form">
                 <input type="username" name="username" placeholder="Usuário" required>
