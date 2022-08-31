@@ -8,7 +8,6 @@ import email.message
 
 
 app = Flask(__name__)
-app.secret_key = 'autorizado'
 #Ter variavel do usuario logado para validar no banco de dados // e utilizar o username setado em usuarioLogado no projeto\\
 usuarioLogado = ""
 #Variavel para poder pesquisar determinado produto na tabela de Produto em Uso// PRECISA SER GLOBAL PARA NAO DAR ERRO \\
@@ -127,7 +126,7 @@ def Excluir():
 #Funcao para abrir tela de cadastrar produto
 @app.route("/cadastrarProduto")
 def AbrirCadastroProduto():
-    return render_template("cadastrarProduto.html", cadastrarProduto=dao.VerProdutos())
+    return render_template("cadastrarProduto.html", cadastrarProduto=dao.VerProdutos(), excluirProduto=dao.VerProdutos())
 
 
 #Funcao para atualizar quantidade do produto caso exista
@@ -146,6 +145,13 @@ def InserirProduto():
     quantidade = request.form['quantidade']
     localizacao = request.form['localizacao']     
     dao.InserirProduto(nome_produto, quantidade, localizacao)
+    return AbrirCadastroProduto()
+
+@app.route("/excluirProduto", methods=['POST'])
+def ExcluirProduto():
+    nome_produto_select = request.form['nome_produto_select_b']
+    atualizar_quantidade = request.form['atualizar_quantidade_soma']
+    dao.SubtrairQuantidadeProdutos(atualizar_quantidade, nome_produto_select)
     return AbrirCadastroProduto()
 
 #Funcao para abrir emprestimos com a lista de emprestimos
