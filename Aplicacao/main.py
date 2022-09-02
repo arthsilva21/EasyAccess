@@ -1,5 +1,4 @@
 from flask import Flask, redirect, render_template, request, url_for
-from flask import session
 from flask import flash
 import dao
 from datetime import datetime
@@ -28,7 +27,6 @@ def Login():
     username = request.form["username"]
     senha = request.form["senha"]
     if dao.Logar(username, senha):
-        #session['administrator'] = request.form['username']
         return redirect(url_for('Home'))
     else:
         flash('Dados inválidos')
@@ -92,9 +90,8 @@ def CadastrarUsuario():
 #Funcao para abrir tela de home
 @app.route('/home')
 def Home():
-    #if 'administrator' in session:
     return render_template("home.html", usuario=usuarioLogado)
-    #return redirect(url_for('Iniciar'))
+    
 
 
 #Funcao onde retorna a tabela de todos produtos em uso
@@ -102,7 +99,6 @@ def Home():
 @app.route("/produto", methods=['GET', 'POST'])
 def Produtos():
     global produto
-    #if 'administrator' in session:
     lista_banco = dao.Produtos()
     if request.method == 'POST':
         produto = request.form["pesquisarProduto"]
@@ -156,10 +152,9 @@ def ExcluirProduto():
 
 #Funcao para abrir emprestimos com a lista de emprestimos
 @app.route("/emprestimo")  
-def Emprestimo():
-    #if 'administrator' in session:  
+def Emprestimo():  
     return render_template("emprestimo.html", geral=dao.Produtos(), emprestimo=dao.Emprestimos())
-    #return redirect(url_for('Iniciar'))
+    
 
 #Funcao para inserir um novo emprestimo na tabela
 @app.route("/emprestimo", methods=['POST'])  
@@ -190,9 +185,8 @@ def DevolverProdutoRelatorio():
 #Funcao para carregar pagina de reservas de produtos
 @app.route("/reserva", methods=['GET'])
 def Reserva():
-    #if 'administrator' in session:
     return render_template("reserva.html", reserva=dao.VerProdutos(), lista=dao.TabelaReservas())
-    #return redirect(url_for('Iniciar'))
+
 
 #Funcao para inserir uma reserva na tabela
 @app.route("/reserva", methods=['POST'])
@@ -215,9 +209,8 @@ def ExcluirReserva():
 #Funcao para carregar relatorios dos produtos na tabela
 @app.route("/relatorio")
 def Relatorio():
-    #if 'administrator' in session:
     return render_template("relatorio.html", relatorio=dao.Relatorios())
-    #return redirect(url_for('Iniciar'))
+
 
 #Funcao para filtrar a busca em relatorio
 @app.route("/filtroRelatorio", methods=['POST'])
@@ -231,7 +224,6 @@ def FiltroRelatorio():
 #Encerrando aplicacao e voltando para a tela de login
 @app.route("/logout")
 def Logout():
-    #session.pop('administrator', None)
     return redirect(url_for('Iniciar'))
 
 
