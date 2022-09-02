@@ -17,15 +17,31 @@
     {%endfor%}
 
     </select>
-    <input class="input" type="number" name="atualizar_quantidade" placeholder="Quantidade">
+    <input class="input" type="number" name="atualizar_quantidade" placeholder="Quantidade" required>
     <button class="botao"> Atualizar </button>
 </form>
 <form action="cadastrarProduto" method="post" class="conteudo-cabeçario">
     <h2>CADASTRAR NOVO PRODUTO</h2>
-    <input class="input" type="text" name="nome_produto" placeholder="Produto">
-    <input class="input" type="number" name="quantidade" placeholder="Quantidade">
-    <input class="input" type="text" name="localizacao" placeholder="Localização">
+    <input class="input" type="text" name="nome_produto" placeholder="Produto" required>
+    <input class="input" type="number" name="quantidade" placeholder="Quantidade" required>
+    <input class="input" type="text" name="localizacao" placeholder="Localização" required>
     <button class="botao"> Cadastrar </button>
 </form>
+<br>
+<form action="excluirProduto" method="post" class="conteudo-cabeçario">
+    <h2>EXCLUIR PRODUTO</h2>
+    <select name="nome_produto_select_b" class="select" aria-label=".form-select-sm example">
+        <!--Lógica para o usuario selecionar material diretamente do banco de dados-->
+        {% for produto in excluirProduto %}
+
+        <option>{{ produto[0] }}</option>
+
+    {%endfor%}
+
+    </select>
+    <input class="input" type="number" name="atualizar_quantidade_soma" placeholder="Quantidade" required>
+    <button class="botao"> Atualizar </button>
+</form>
+
 </div>
 {% endblock %}

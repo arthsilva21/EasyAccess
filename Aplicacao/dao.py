@@ -1,5 +1,5 @@
 import mysql.connector
-import pymysql
+#import pymysql
 
 #1 - Usar no wamps
 #2 - Usar no cloud
@@ -7,7 +7,8 @@ def conecta():
     #1
     #return pymysql.connect(user="root", password="@Dmin", host="localhost", database="dboAlmoxarife")
     #2
-    return mysql.connector.connect(host="34.122.178.27",
+    #return mysql.connector.connect(host="localhost", user="root", password="@Dmin", database="dboAlmoxarife")
+    return mysql.connector.connect(host="34.122.178.27", 
                                    user="root",
                                    password="@Dmin",
                                    database="dboAlmoxarife")
@@ -178,6 +179,7 @@ def FiltroRelatorio(hora_do_emprestimo, hora_da_devolucao):
     return cursor.fetchall()
 
 #Update na tabela produtos para quando for realizado o emprestimo diminuir a quantidade emprestada na quantidade disponivel
+#Update na tabela produtos para quando for realizado a exclusao de determinada quantidade de produto.
 def SubtrairQuantidadeProdutos(quantidade, nome_produto):
     bd = conecta()
     cursor = bd.cursor()

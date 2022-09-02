@@ -17,6 +17,15 @@
 
     <!-- para centralizar o conteúdo -->
     <section class="content-center">
+
+        {% set mensagens = get_flashed_messages() %}
+        {% if mensagens %}
+        <div>
+            {% for msg in mensagens %}
+            {{ msg }}
+            {% endfor %}
+        </div>
+        {% endif %}
         <form action="recuperarSenha" method="post" id="form-login">
 
             <!--Input para mandar pro email, placeholder para exiber o que o campo faz, required é falando que o campo é obrigatorio  -->

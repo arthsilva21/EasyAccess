@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for
-from flask import session
+from flask import flash
 import dao
 from datetime import datetime
 import smtplib
@@ -7,7 +7,6 @@ import email.message
 
 
 app = Flask(__name__)
-app.secret_key = 'autorizado'
 #Ter variavel do usuario logado para validar no banco de dados // e utilizar o username setado em usuarioLogado no projeto\\
 usuarioLogado = ""
 #Variavel para poder pesquisar determinado produto na tabela de Produto em Uso// PRECISA SER GLOBAL PARA NAO DAR ERRO \\
@@ -28,9 +27,10 @@ def Login():
     username = request.form["username"]
     senha = request.form["senha"]
     if dao.Logar(username, senha):
-        session['administrator'] = request.form['username']
         return redirect(url_for('Home'))
-    return render_template("index.html")
+    else:
+        flash('Dados inválidos')
+        return render_template("index.html")
 
 #Funcao para abrir tela de recuperacao de senha
 @app.route("/recuperarSenha")
@@ -39,7 +39,7 @@ def AbrirRecuperarSenha():
 
 #Funcao para enviar email de recuperação de usuario e senha
 @app.route("/recuperarSenha", methods=['POST'])
-def RecuperarSenha():   
+def RecuperarSenha():
     emailP = request.form['email']
     if dao.RecuperarSenha(emailP):
         usuario = dao.RecuperarUsuario(emailP)
@@ -62,7 +62,8 @@ def RecuperarSenha():
         #Login credentials for sending the mail
         s.login(msg['From'], password)
         s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))       
-
+    else:
+        flash("E-mail não cadastrado")
     return AbrirRecuperarSenha()
 
 
@@ -81,15 +82,16 @@ def CadastrarUsuario():
     if senha == validarSenha:
         dao.CadastrarUsuario(username, email, senha)
         return redirect(url_for('Iniciar'))
-    return AbrirCadastroUsuario()
+    else:
+        flash('A senhas devem ser repetidas!')
+        return AbrirCadastroUsuario()
 
 
 #Funcao para abrir tela de home
 @app.route('/home')
 def Home():
-    if 'administrator' in session:
-        return render_template("home.html", usuario=usuarioLogado)
-    return redirect(url_for('Iniciar'))
+    return render_template("home.html", usuario=usuarioLogado)
+    
 
 
 #Funcao onde retorna a tabela de todos produtos em uso
@@ -97,16 +99,15 @@ def Home():
 @app.route("/produto", methods=['GET', 'POST'])
 def Produtos():
     global produto
-    if 'administrator' in session:
-        lista_banco = dao.Produtos()
-        if request.method == 'POST':
-            produto = request.form["pesquisarProduto"]
-            if produto != None:
-                lista_banco = dao.PesquisarProduto(produto)
-            return render_template("produto.html", lista=lista_banco)
-        else:
-            return render_template("produto.html", lista=lista_banco)
-    return redirect(url_for('Iniciar'))
+    lista_banco = dao.Produtos()
+    if request.method == 'POST':
+        produto = request.form["pesquisarProduto"]
+        if produto != None:
+            lista_banco = dao.PesquisarProduto(produto)
+        return render_template("produto.html", lista=lista_banco)
+    else:
+        return render_template("produto.html", lista=lista_banco)
+    #return redirect(url_for('Iniciar'))
 
 #Funcao para exclusao no botao da tabela de produtos
 @app.route('/produtoExclusao', methods=['POST'])
@@ -121,7 +122,7 @@ def Excluir():
 #Funcao para abrir tela de cadastrar produto
 @app.route("/cadastrarProduto")
 def AbrirCadastroProduto():
-    return render_template("cadastrarProduto.html", cadastrarProduto=dao.VerProdutos())
+    return render_template("cadastrarProduto.html", cadastrarProduto=dao.VerProdutos(), excluirProduto=dao.VerProdutos())
 
 
 #Funcao para atualizar quantidade do produto caso exista
@@ -142,12 +143,18 @@ def InserirProduto():
     dao.InserirProduto(nome_produto, quantidade, localizacao)
     return AbrirCadastroProduto()
 
+@app.route("/excluirProduto", methods=['POST'])
+def ExcluirProduto():
+    nome_produto_select = request.form['nome_produto_select_b']
+    atualizar_quantidade = request.form['atualizar_quantidade_soma']
+    dao.SubtrairQuantidadeProdutos(atualizar_quantidade, nome_produto_select)
+    return AbrirCadastroProduto()
+
 #Funcao para abrir emprestimos com a lista de emprestimos
 @app.route("/emprestimo")  
-def Emprestimo():
-    if 'administrator' in session:  
-        return render_template("emprestimo.html", geral=dao.Produtos(), emprestimo=dao.Emprestimos())
-    return redirect(url_for('Iniciar'))
+def Emprestimo():  
+    return render_template("emprestimo.html", geral=dao.Produtos(), emprestimo=dao.Emprestimos())
+    
 
 #Funcao para inserir um novo emprestimo na tabela
 @app.route("/emprestimo", methods=['POST'])  
@@ -178,9 +185,8 @@ def DevolverProdutoRelatorio():
 #Funcao para carregar pagina de reservas de produtos
 @app.route("/reserva", methods=['GET'])
 def Reserva():
-    if 'administrator' in session:
-        return render_template("reserva.html", reserva=dao.VerProdutos(), lista=dao.TabelaReservas())
-    return redirect(url_for('Iniciar'))
+    return render_template("reserva.html", reserva=dao.VerProdutos(), lista=dao.TabelaReservas())
+
 
 #Funcao para inserir uma reserva na tabela
 @app.route("/reserva", methods=['POST'])
@@ -203,9 +209,8 @@ def ExcluirReserva():
 #Funcao para carregar relatorios dos produtos na tabela
 @app.route("/relatorio")
 def Relatorio():
-    if 'administrator' in session:
-        return render_template("relatorio.html", relatorio=dao.Relatorios())
-    return redirect(url_for('Iniciar'))
+    return render_template("relatorio.html", relatorio=dao.Relatorios())
+
 
 #Funcao para filtrar a busca em relatorio
 @app.route("/filtroRelatorio", methods=['POST'])
@@ -219,7 +224,6 @@ def FiltroRelatorio():
 #Encerrando aplicacao e voltando para a tela de login
 @app.route("/logout")
 def Logout():
-    session.pop('administrator', None)
     return redirect(url_for('Iniciar'))
 
 
