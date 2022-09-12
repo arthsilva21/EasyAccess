@@ -20,19 +20,21 @@
 
         {% set mensagens = get_flashed_messages() %}
         {% if mensagens %}
-        <div>
+        <div class="erro">
             {% for msg in mensagens %}
             {{ msg }}
             {% endfor %}
         </div>
         {% endif %}
+        <br>
+        <h3>Recuperar Senha</h3>
         <form action="recuperarSenha" method="post" id="form-login">
 
             <!--Input para mandar pro email, placeholder para exiber o que o campo faz, required é falando que o campo é obrigatorio  -->
             <div class="content-form">
-                <h3>Recuperar Senha</h3>
+
                 <!--<input type="username" name="usuario" placeholder="Usuário">-->
-                <input type="email" name="email" placeholder="E-mail" >
+                <input type="email" name="email" placeholder="E-mail" required>
             </div>
 
             <div>

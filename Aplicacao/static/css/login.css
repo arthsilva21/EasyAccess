@@ -15,7 +15,7 @@ body {
 /*Imagem de login*/
 .container-img {
     text-align: center;
-    padding-top: 120px;
+    padding-top: 80px;
 }
 
 img {
@@ -101,6 +101,11 @@ a:hover::after {
 }
 
 h3 {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    margin-left: 20px;
 }
 
+.erro {
+    color: red;
+    margin-left: 20px;
+}

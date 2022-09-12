@@ -214,13 +214,15 @@ h2{
     .sidebar a span{
         display: none;
     }
+
     .container-grid {
         grid-template-columns: 30px 1fr;
     }
     .table {
-        width: 300px;
+        width: 97%;
         font-size: 13px;
         overflow:auto;
+        
     }
     h2 {
         font-size: 15px;
