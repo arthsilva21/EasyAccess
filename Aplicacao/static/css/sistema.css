@@ -139,6 +139,8 @@ h2{
     height: 50px;
     text-align: center;
     table-layout: auto;
+
+    
 }
 
 /*Titulo da tabela*/
@@ -210,22 +212,78 @@ h2{
 @media(max-width:500px){
     .container-grid .sidebar {
         max-width: 50px;
-    }
-    .sidebar a span{
-        display: none;
+
     }
 
+    span{
+        position: absolute;
+        margin-left: 13px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .sidebar a i{
+        margin-left: -10px;
+    }
+
+    a:hover{
+        background: inherit;
+    }
+
+    .sidebar a:hover span{
+        opacity: 1;
+        visibility: visible;
+        color: rgb(255, 255, 255);
+        background-color: rgb(43, 40, 40);
+        transition: .4s;
+        max-height: 100%;
+        top:0px;
+        padding: 20px;
+        padding-inline: 10px;
+        border-bottom: 2px solid rgb(245, 19, 19);
+        
+    }
+
+    a {
+        text-decoration: none;
+        position: relative;
+        color: rgb(43, 43, 43);
+    }
+    
+
+    a::after {
+        content: " ";
+        width: 0%;
+        height: 2px;
+        background-color: rgb(245, 19, 19);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: 0.5s ease-in-out;
+    }
+    
+    a:hover::after {
+        width: 100%;
+    }
+    
+
+    .sidebar i {
+        padding-right: 0px;
+    }
+    
     .container-grid {
         grid-template-columns: 30px 1fr;
     }
+
     .table {
         width: 97%;
         font-size: 13px;
-        overflow:auto;
-        
+        overflow-x: auto;
     }
+
     h2 {
         font-size: 15px;
+
     }
     .btn-danger {
         border-radius: 5px ;
@@ -233,13 +291,16 @@ h2{
         height: 20px;
         font-size: 10px;
     }
+
     .botao {
         padding: 5px;
         margin: 5;
     }
+
     .input{
         padding: 5px 2px;
     }
+    
     .header{
         width: 100%;
     }

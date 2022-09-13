@@ -5,8 +5,9 @@
 {% extends "home.html" %}
 {% block content %}
 
+<section>
 <div class="container">
-<form action="reserva" method="post" class="conteudo-cabeçario">
+<form action="reserva" method="post">
   <h2>DESEJA RESERVAR UM PRODUTO?</h2>
 
   <select name="reservar_select" class="select" aria-label=".form-select-sm example">
@@ -58,5 +59,6 @@
   </table>
   </select>
 </div>
+</section>
 
 {% endblock %}

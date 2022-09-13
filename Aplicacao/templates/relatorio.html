@@ -4,8 +4,9 @@
 {% extends "home.html" %}
 {% block content %}
 
+<section>
 <div class="container">
-<form class="conteudo-cabeçario" action="filtroRelatorio" method="post">
+<form action="filtroRelatorio" method="post">
     <h2>RELATÓRIO DE PATRIMÔNIO</h2>
     <input class="input" type="datetime-local" name="hora_do_emprestimo" required>
     <input class="input" type="datetime-local" name="hora_da_devolucao" required>
@@ -40,4 +41,5 @@
     </table>
 </form>
 </div>
+</section>
 {% endblock %}

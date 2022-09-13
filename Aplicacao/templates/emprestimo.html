@@ -4,8 +4,9 @@
 {% extends "home.html" %}
 {% block content %}
 
+<section>
 <div class="container">
-<form action="emprestimo" method="post" class="conteudo-cabeçario">
+<form action="emprestimo" method="post">
     <h2>EMPRESTIMO</h2>
     <!--Criação do formato de tabela -->
     <select name="nome_produto" class="select" aria-label=".form-select-sm example">
@@ -62,6 +63,6 @@
         </tbody>
     </table>
 </div>
-
+</section>
 
 {% endblock %}
